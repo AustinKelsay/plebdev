@@ -1,0 +1,18 @@
+.question {
+    padding: 2%;
+}
+
+.question a {
+    color: #00bcd4;
+    text-decoration: underline;
+}
+
+.gridItemLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.gridItemLeft p {
+    margin: 1% auto;
+}
