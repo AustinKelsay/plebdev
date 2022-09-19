@@ -9,6 +9,7 @@ import {
   TagCloseButton,
   Tag,
   Box,
+  TagRightIcon,
 } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
 
@@ -75,6 +76,7 @@ const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
               colorScheme={"blue"}
               key={tag.name}
               m={"1%"}
+              cursor={"pointer"}
               onClick={() => addTag(tag.name, true)}
             >
               {tag.name}
@@ -83,9 +85,9 @@ const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
           {query.length && addTagUI === true && (
             <Tag m={"1%"} variant={"outline"} colorScheme={"green"}>
               {query}
-              <FaPlus
-                ml={"5%"}
+              <TagRightIcon
                 cursor={"pointer"}
+                as={FaPlus}
                 onClick={() => addTag(query)}
               />
             </Tag>
