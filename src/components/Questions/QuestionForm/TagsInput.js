@@ -60,6 +60,8 @@ const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
         <Input
           name="tags"
           type="text"
+          placeholder="Start typing to see existing tags"
+          _placeholder={{ fontSize: "0.8rem", color: "silver" }}
           onChange={(e) => setQuery(e.target.value)}
         />
       </InputGroup>

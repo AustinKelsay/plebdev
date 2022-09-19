@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import QuestionForm from "../../src/components/Questions/QuestionForm";
+import QuestionForm from "../../src/components/Questions/QuestionForm/QuestionForm";
 
 export default function Form({ tags }) {
   return (
