@@ -1,5 +1,5 @@
 import React from "react";
-import UsersList from "../src/components/UsersList";
+import UsersList from "../src/components/Users/UsersList";
 
 export default function Home({ users }) {
   return <UsersList users={users} />;

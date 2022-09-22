@@ -10,8 +10,10 @@ import {
   Tag,
   Box,
   TagRightIcon,
+  StylesProvider,
 } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
+import styles from "./styles.module.css";
 
 const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
   const [addTagUI, setAddTagUI] = useState(false);
@@ -36,19 +38,19 @@ const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
   return (
     <FormControl>
       <FormLabel>Tags</FormLabel>
-      <FormHelperText mb={"1%"}>
+      <FormHelperText className={styles.formHelperText}>
         Add up to 5 tags to label your question
       </FormHelperText>
       <InputGroup>
         {formData.tags.length ? (
-          <InputLeftAddon borderRight={"none"} bg={"none"}>
+          <InputLeftAddon className={styles.inputLeftAddon}>
             {formData.tags.map((tag) => {
               return (
                 <Tag
-                  m={"1%"}
-                  key={tag}
+                  className={styles.tag}
                   variant={"outline"}
                   colorScheme={"blue"}
+                  key={tag}
                 >
                   {tag}
                   <TagCloseButton onClick={() => removeTag(tag)} />
@@ -66,29 +68,27 @@ const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
         />
       </InputGroup>
       {query !== "" ? (
-        <Box
-          w={"100%"}
-          border={"2px solid #e6e6e6"}
-          borderTop={"none"}
-          borderBottomRadius={"5px"}
-        >
+        <Box className={styles.tagResultsBox}>
           {filterState.map((tag) => (
             <Tag
+              className={styles.tagResult}
               variant={"outline"}
               colorScheme={"blue"}
               key={tag.name}
-              m={"1%"}
-              cursor={"pointer"}
               onClick={() => addTag(tag.name, true)}
             >
               {tag.name}
             </Tag>
           ))}
           {query.length && addTagUI === true && (
-            <Tag m={"1%"} variant={"outline"} colorScheme={"green"}>
+            <Tag
+              className={styles.tagToAdd}
+              variant={"outline"}
+              colorScheme={"green"}
+            >
               {query}
               <TagRightIcon
-                cursor={"pointer"}
+                className={styles.tagRightIcon}
                 as={FaPlus}
                 onClick={() => addTag(query)}
               />

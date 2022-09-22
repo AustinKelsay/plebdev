@@ -1,0 +1,30 @@
+.componentTitle {
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 2%;
+  margin: 2% auto;
+}
+
+.tagsContainer {
+  width: 100%;
+}
+
+.tagCard {
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  margin: 2% auto;
+  padding: 1%;
+  padding-right: 5%;
+}
+
+.tagCard:hover {
+  cursor: pointer;
+  border-color: #3182ce;
+}
+
+.tag {
+  cursor: pointer;
+}
+
+.taginfo {
+  margin-top: 10%;
+}

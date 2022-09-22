@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
-import Header from "../Header";
-import Sidebar from "../Sidebar";
-import Footer from "../Footer";
+import Header from "../Header/Header";
+import Sidebar from "../Sidebar/Sidebar";
+import Footer from "../Footer/Footer";
 
 export default function Layout({ children }) {
   return (

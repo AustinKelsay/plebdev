@@ -1,0 +1,15 @@
+.componentTitle {
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 2%;
+  margin: 2% auto;
+}
+
+.tag {
+  margin: 2% auto;
+  cursor: pointer;
+}
+
+.tagInfo {
+  margin: 2% auto;
+  margin-top: 10%;
+}

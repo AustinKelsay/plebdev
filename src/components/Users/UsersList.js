@@ -2,28 +2,28 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Flex, Text, Spacer, Box } from "@chakra-ui/react";
+import styles from "./styles.module.css";
 
 const UsersList = ({ users }) => {
   return (
     <div>
-      <Text
-        borderBottom={"1px solid #e6e6e6"}
-        paddingLeft={"2%"}
-        margin={"2% auto"}
-        fontSize={"3xl"}
-      >
+      <Text fontSize={"3xl"} className={styles.componentTitle}>
         Users
       </Text>
-      <Flex wrap="wrap" justifyContent="flex-start" marginLeft={"2%"}>
+      <Flex
+        wrap="wrap"
+        justifyContent="flex-start"
+        className={styles.usersContainer}
+      >
         {users.map((user) => (
           <Flex
             justifyContent={"space-evenly"}
             flexDirection={"row"}
-            marginRight={"1%"}
-            w="fill"
+            w={"fill"}
+            className={styles.userCard}
             key={user.id}
           >
-            <Box h="100%" w="auto" marginRight={"2%"}>
+            <Box className={styles.userImage}>
               <Image
                 width="100%"
                 height="100%"
@@ -32,12 +32,10 @@ const UsersList = ({ users }) => {
                 alt={user.name}
               />
             </Box>
-            <Spacer p="2%" />
-            <Flex w="100%" h="100%" flexDirection={"column"}>
+            <Spacer className={styles.spacer} />
+            <Flex className={styles.userInfo} flexDirection={"column"}>
               <Link href={`/users/${user.id}`}>
-                <Text marginRight={"3%"} cursor={"pointer"} color={"#0000EE"}>
-                  {user.username}
-                </Text>
+                <Text className={styles.userName}>{user.username}</Text>
               </Link>
               <Text fontSize={"xs"}>Questions: 1</Text>
               <Text fontSize={"xs"}>Answers: 1</Text>

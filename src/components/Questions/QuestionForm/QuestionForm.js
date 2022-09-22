@@ -3,10 +3,11 @@ import { Flex, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import TagsInput from "./TagsInput";
+import TagsInput from "./TagsInput/TagsInput";
 import dynamic from "next/dynamic";
 import "@uiw/react-markdown-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
+import styles from "./styles.module.css";
 
 const MarkdownEditor = dynamic(
   () => import("@uiw/react-markdown-editor").then((mod) => mod),
@@ -64,28 +65,26 @@ const QuestionForm = ({ tags }) => {
 
   return (
     <Flex>
-      <form
-        style={{ padding: "1%", width: "90%", margin: "0 auto" }}
-        onSubmit={(e) => handleSubmit(e)}
-      >
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <FormControl>
           <FormLabel>Title</FormLabel>
           <Input
-            mb={"1%"}
+            className={styles.input}
             onChange={(e) => handleChange(e)}
             name="title"
             type="text"
           />
           <FormLabel>Description</FormLabel>
-          <div style={{ marginBottom: "1%" }}>
-            <MarkdownEditor
-              height={300}
-              value={formData.description}
-              onChange={handleMarkdownChange}
-              // toolbars={[code]}
-              name="description"
-              type="markdown"
-            />
+          <div className={styles.markdownContainer}>
+            {(
+              <MarkdownEditor
+                height={300}
+                value={formData.description}
+                onChange={handleMarkdownChange}
+                name="description"
+                type="markdown"
+              />
+            ) || <p>loading</p>}
           </div>
           <TagsInput
             formData={formData}
@@ -96,8 +95,7 @@ const QuestionForm = ({ tags }) => {
           />
         </FormControl>
         <Flex
-          mt={"2%"}
-          w={"100%"}
+          className={styles.buttonContainer}
           flexDirection={"row"}
           justifyContent={"flex-end"}
         >

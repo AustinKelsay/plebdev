@@ -1,0 +1,31 @@
+.formHelperText {
+  margin-bottom: 1%;
+}
+
+.inputLeftAddon {
+  border-right: none;
+  background: none;
+}
+
+.tag {
+  margin: 1%;
+}
+
+.tagResultsBox {
+  width: 100%;
+  border: 2px solid #e6e6e6;
+  border-top: none;
+}
+
+.tagResult {
+  margin: 1%;
+  cursor: pointer;
+}
+
+.tagToAdd {
+  margin: 1%;
+}
+
+.tagRightIcon {
+  cursor: pointer;
+}

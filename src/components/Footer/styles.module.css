@@ -1,0 +1,9 @@
+.footer {
+  width: 20%;
+  height: fit-content;
+  margin: 2% auto;
+}
+
+.footerText {
+  text-align: center;
+}

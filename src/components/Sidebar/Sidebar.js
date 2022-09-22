@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import styles from "./styles.module.css";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -18,15 +19,9 @@ const Sidebar = () => {
         return selected === option ? (
           <Button
             onClick={() => handleClick(option)}
-            w="100%"
+            className={styles.buttonSelected}
             variant={"ghost"}
-            borderRadius={0}
             color={"black.500"}
-            borderRight={"3px solid orange"}
-            fontFamily={"Source Code Pro, monospace"}
-            fontWeight={"bold"}
-            backgroundColor={"#e6e6e6"}
-            _hover={{ background: "#e6e6e6" }}
             key={option}
           >
             {option}
@@ -34,14 +29,10 @@ const Sidebar = () => {
         ) : (
           <Button
             onClick={() => handleClick(option)}
-            w="100%"
-            borderRadius={0}
+            className={styles.button}
             variant="ghost"
             colorScheme="whiteAlpha"
             color={"gray.500"}
-            fontFamily={"Source Code Pro, monospace"}
-            fontWeight={"normal"}
-            _hover={{ background: "#e6e6e6" }}
             key={option}
           >
             {option}

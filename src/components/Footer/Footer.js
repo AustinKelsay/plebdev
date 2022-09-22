@@ -2,17 +2,16 @@ import React from "react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import styles from "./styles.module.css";
 
 const Footer = () => {
   return (
     <Flex
+      className={styles.footer}
       justifyContent={"space-evenly"}
       flexDirection={"column"}
-      w={"20%"}
-      h={"fit-content"}
-      margin={"2% auto"}
     >
-      <Text textAlign={"center"} fontSize={"sm"}>
+      <Text className={styles.footerText} fontSize={"sm"}>
         Contribute / Connect
       </Text>
 

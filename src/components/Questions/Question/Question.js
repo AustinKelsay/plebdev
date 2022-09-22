@@ -15,54 +15,39 @@ const Question = ({
   id,
 }) => {
   return (
-    <Grid
-      borderBottom={"1px solid #e6e6e6"}
-      borderTop={"1px solid #e6e6e6"}
-      templateColumns={"15% 2fr"}
-      className={styles.question}
-    >
+    <Grid templateColumns={"15% 2fr"} className={styles.question}>
       <GridItem className={styles.gridItemLeft} colSpan={1}>
         <Text>Votes {score}</Text>
         <Text>Answers 0</Text>
         <Text>Views {views}</Text>
       </GridItem>
       <Flex flexDirection={"column"}>
-        <Flex flexDirection={"row"} w={"100%"}>
+        <Flex className={styles.questionInfoRow} flexDirection={"row"}>
           <Flex flexDirection={"column"} justifyContent={"space-evenly"}>
-            <Text mt={"1%"} fontSize={"1xl"}>
+            <Text className={styles.questionTitle} fontSize={"1xl"}>
               <Link href={`/questions/${id}`} passHref>
                 {title}
               </Link>
             </Text>
-            <Text mt={"1%"} fontWeight={"normal"} fontSize={"sm"}>
+            <Text className={styles.questionDescription} fontSize={"sm"}>
               {description}
             </Text>
-            <Text
-              mt={"1%"}
-              fontWeight={"normal"}
-              color={"grey"}
-              fontSize={"xs"}
-            >
+            <Text className={styles.questionCreated} fontSize={"xs"}>
               {created}
             </Text>
           </Flex>
         </Flex>
         <Flex
-          w={"100%"}
-          whiteSpace={"nowrap"}
+          className={styles.questionTags}
           flexDirection={"row"}
           justifyContent={"space-between"}
         >
           <Box w={"60%"}>
             {tags.map((tag) => (
               <Tag
+                className={styles.tag}
                 variant="outline"
                 colorScheme="blue"
-                cursor={"pointer"}
-                margin={"1%"}
-                paddingTop={"1%"}
-                paddingBottom={"1%"}
-                marginLeft={0}
                 key={tag}
               >
                 {tag}
@@ -70,18 +55,16 @@ const Question = ({
             ))}
           </Box>
           <Flex
+            w={"fill"}
             justifyContent={"flex-end"}
             alignSelf={"center"}
             flexDirection={"row"}
-            w={"fill"}
           >
             <Image w={"10%"} src={author.profilePhoto} alt={author.username} />
             <Text
+              className={styles.questionAuthorName}
               alignSelf={"center"}
-              fontWeight={"normal"}
-              color={"grey"}
               fontSize={"sm"}
-              marginLeft={"3%"}
             >
               {author.username}
             </Text>

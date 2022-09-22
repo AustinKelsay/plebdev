@@ -1,5 +1,5 @@
 import React from "react";
-import TagsList from "../../src/components/tags/TagsList";
+import TagsList from "../../src/components/tags/TagsList/TagsList";
 
 export default function Home({ tags }) {
   return <TagsList tags={tags} />;

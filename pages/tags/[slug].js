@@ -1,5 +1,5 @@
 import React from "react";
-import TagInfo from "../../src/components/tags/TagInfo";
+import TagInfo from "../../src/components/tags/TagInfo/TagInfo";
 import { useRouter } from "next/router";
 
 export default function Home({ tags }) {

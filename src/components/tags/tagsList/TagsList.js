@@ -1,39 +1,31 @@
 import React from "react";
-import { Text, Flex, Tag, Spacer } from "@chakra-ui/react";
+import { Text, Flex, Tag } from "@chakra-ui/react";
 import Link from "next/link";
+import styles from "./styles.module.css";
 
 const TagsList = ({ tags }) => {
   return (
     <div>
-      <Text
-        borderBottom={"1px solid #e6e6e6"}
-        paddingLeft={"2%"}
-        margin={"2% auto"}
-        fontSize={"3xl"}
-      >
+      <Text className={styles.componentTitle} fontSize={"3xl"}>
         Tags
       </Text>
       <Flex wrap="wrap" justifyContent="flex-start">
-        <Flex justifyContent={"space-evenly"} flexDirection={"row"} w={"100%"}>
+        <Flex
+          className={styles.tagsContainer}
+          justifyContent={"space-evenly"}
+          flexDirection={"row"}
+        >
           {tags.map((tag) => (
             <Link key={tag.id} href={`/tags/${tag.id}`}>
-              <Flex
-                border={"2px solid #e6e6e6"}
-                borderRadius={"5px"}
-                flexDirection={"column"}
-                m={"2% auto"}
-                p={"1%"}
-                pr={"5%"}
-                _hover={{ cursor: "pointer", borderColor: "#3182ce" }}
-              >
+              <Flex className={styles.tagCard} flexDirection={"column"}>
                 <Tag
-                  cursor={"pointer"}
+                  className={styles.tag}
                   variant={"outline"}
                   colorScheme={"blue"}
                 >
                   {tag.name}
                 </Tag>
-                <Flex mt={"10%"} flexDirection={"column"}>
+                <Flex className={styles.tagInfo} flexDirection={"column"}>
                   <Text fontSize={"xs"}>questions: 1</Text>
                   <Text fontSize={"xs"}>answers: 1</Text>
                 </Flex>
