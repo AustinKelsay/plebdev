@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const removeImports = require("next-remove-imports")();
+
+const nextConfig = removeImports({
+  experimental: { esmExternals: true },
   reactStrictMode: true,
   images: {
-    domains: ['secure.gravatar.com'],
+    domains: ["secure.gravatar.com"],
   },
-}
+});
 
-module.exports = nextConfig
+module.exports = nextConfig;
