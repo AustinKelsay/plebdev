@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, Flex, Tag, Box } from "@chakra-ui/react";
+import styles from "./styles.module.css";
 
 const TagInfo = ({ tag }) => {
   return (

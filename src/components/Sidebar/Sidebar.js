@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
@@ -8,15 +8,24 @@ const Sidebar = () => {
   const options = ["Questions", "Tags", "Users"];
   const [selected, setSelected] = useState("Questions");
 
+  // Get the first endpoint of the url
+  const currentPath = router.pathname.split("/")[1];
+
+  useEffect(() => {
+    if (currentPath === "") {
+      setSelected(options[0]);
+    } else setSelected(currentPath);
+  }, [currentPath]);
+
   const handleClick = (option) => {
-    setSelected(option);
+    setSelected(option.toLowerCase());
     router.push(`/${option.toLowerCase()}`);
   };
 
   return (
     <Box>
       {options.map((option) => {
-        return selected === option ? (
+        return selected === option.toLowerCase() ? (
           <Button
             onClick={() => handleClick(option)}
             className={styles.buttonSelected}
