@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Flex, Tag } from "@chakra-ui/react";
+import { Text, Flex, Tag, Grid, Box } from "@chakra-ui/react";
 import Link from "next/link";
 import styles from "./styles.module.css";
 
@@ -9,30 +9,41 @@ const TagsList = ({ tags }) => {
       <Text className={styles.componentTitle} fontSize={"3xl"}>
         Tags
       </Text>
-      <Flex wrap="wrap" justifyContent="flex-start">
-        <Flex
-          className={styles.tagsContainer}
-          justifyContent={"space-evenly"}
-          flexDirection={"row"}
-        >
-          {tags.map((tag) => (
-            <Link key={tag.id} href={`/tags/${tag.id}`}>
-              <Flex className={styles.tagCard} flexDirection={"column"}>
-                <Tag
-                  className={styles.tag}
-                  variant={"outline"}
-                  colorScheme={"blue"}
-                >
-                  {tag.name}
-                </Tag>
-                <Flex className={styles.tagInfo} flexDirection={"column"}>
-                  <Text fontSize={"xs"}>questions: 1</Text>
-                  <Text fontSize={"xs"}>answers: 1</Text>
-                </Flex>
+      <Flex flexDirection={"row"} flexWrap={"wrap"}>
+        {tags.map((tag) => (
+          <Link key={tag.id} href={`/tags/${tag.id}`}>
+            <Flex
+              flexDirection={"column"}
+              justifyContent={"space-between"}
+              className={styles.tagCard}
+            >
+              <Tag
+                className={styles.tag}
+                variant={"outline"}
+                colorScheme={"blue"}
+              >
+                {tag.name}
+              </Tag>
+              <Box className={styles.tagDescriptionContainer}>
+                <Text className={styles.tagDescription} fontSize={"xs"}>
+                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                </Text>
+              </Box>
+              <Flex flexDirection={"column"}>
+                <Text className={styles.tagStat} fontSize={"xs"}>
+                  questions: 1
+                </Text>
+                <Text className={styles.tagStat} fontSize={"xs"}>
+                  answers: 1
+                </Text>
               </Flex>
-            </Link>
-          ))}
-        </Flex>
+            </Flex>
+          </Link>
+        ))}
       </Flex>
     </div>
   );

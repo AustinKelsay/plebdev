@@ -8,11 +8,13 @@
 }
 
 .tagCard {
-  border: 2px solid #e6e6e6;
-  border-radius: 5px;
   margin: 2% auto;
   padding: 1%;
-  padding-right: 5%;
+  padding-left: 0;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  width: 20vw;
+  height: 15vh;
 }
 
 .tagCard:hover {
@@ -20,10 +22,23 @@
   border-color: #3182ce;
 }
 
-.tag {
-  cursor: pointer;
+.tagDescriptionContainer {
+  height: 100%;
 }
 
-.taginfo {
-  margin-top: 10%;
+.tagDescription {
+  white-space: nowrap;
+  overflow: clip;
+  text-overflow: ellipsis;
+  margin-left: 2%;
+}
+
+.tag {
+  margin-left: 2%;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.tagStat {
+  margin-left: 2%;
 }
