@@ -1716,10 +1716,10 @@
     "@uiw/codemirror-extensions-basic-setup" "4.12.3"
     codemirror "^6.0.0"
 
-"@uiw/react-markdown-editor@^5.7.0":
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-editor/-/react-markdown-editor-5.7.0.tgz#58a8dc93aa727f831227fd37696256097bf5f718"
-  integrity sha512-uWs7QPva83JDbR7LYx+JqLSsf15MDy6bpZHryTlSiLlV2nqgBAjmVLQTbSGrw4SxoGXlhPx7dEOjNnJ0SSXcug==
+"@uiw/react-markdown-editor@^5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@uiw/react-markdown-editor/-/react-markdown-editor-5.8.0.tgz#e85d2d7b7ca5a01f0ae513f46620b4724921647b"
+  integrity sha512-bCaQckvkgteMq10/zL7JWfAwrbugMKgMrOFJkcq++vES9UZ97O8IMG9qodz+bgEZDBuDWPOWWepmYoscGTn8fQ==
   dependencies:
     "@codemirror/lang-markdown" "^6.0.0"
     "@codemirror/language-data" "^6.1.0"
