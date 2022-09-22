@@ -1,5 +1,6 @@
 import React from "react";
 import Question from "../Question/Question";
+import Loading from "../../Loading/Loading";
 import { Text, Box, Flex, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
@@ -26,7 +27,7 @@ const QuestionsList = ({ questions }) => {
       {questions.length ? (
         questions.map((q) => <Question key={q.id} {...q} />)
       ) : (
-        <p>loading</p>
+        <Loading />
       )}
     </Box>
   );

@@ -3,6 +3,7 @@ import { Flex, Button, Box, Text, Grid, GridItem } from "@chakra-ui/react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Loading from "../../src/components/Loading/Loading";
 
 const Profile = () => {
   const { data: session, status } = useSession();
@@ -75,7 +76,7 @@ const Profile = () => {
       </Flex>
     </Flex>
   ) : (
-    <Text>Loading</Text>
+    <Loading />
   );
 };
 

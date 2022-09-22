@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import Loading from "../../src/components/Loading/Loading";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -60,7 +61,7 @@ const Question = () => {
           ) : null}
         </Box>
       ) : (
-        <div>loading</div>
+        <Loading />
       )}
     </div>
   );

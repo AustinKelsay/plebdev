@@ -1,0 +1,14 @@
+.loadContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 4rem;
+}
+
+.loadText {
+  margin-top: 3%;
+  color: orange;
+  font-weight: 500;
+}

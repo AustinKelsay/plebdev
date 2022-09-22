@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Flex, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+import Loading from "../../Loading/Loading";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -84,7 +85,7 @@ const QuestionForm = ({ tags }) => {
                 name="description"
                 type="markdown"
               />
-            ) || <p>loading</p>}
+            ) || <Loading />}
           </div>
           <TagsInput
             formData={formData}
