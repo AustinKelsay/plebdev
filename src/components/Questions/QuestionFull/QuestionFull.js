@@ -1,13 +1,16 @@
 import React from "react";
 import { Box, Flex, Text, Tag, Button } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
+import { deleteQuestion } from "../../../redux/questionsReducer";
+import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 
 const QuestionFull = ({ question, status }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleDelete = () => {
-    dispatch(deleteQuestion(slug));
+    dispatch(deleteQuestion(router.query.slug));
     router.push("/questions");
   };
   return (
@@ -49,9 +52,19 @@ const QuestionFull = ({ question, status }) => {
         </Flex>
       </Flex>
       {status === "authenticated" ? (
-        <Button onClick={handleDelete} colorScheme={"red"} mt={"2%"}>
-          Delete
-        </Button>
+        <Flex
+          className={styles.buttonContainer}
+          flexDirection={"row"}
+          justifyContent={"flex-end"}
+        >
+          <Button
+            onClick={handleDelete}
+            colorScheme={"red"}
+            className={styles.button}
+          >
+            Delete
+          </Button>
+        </Flex>
       ) : null}
     </Box>
   );

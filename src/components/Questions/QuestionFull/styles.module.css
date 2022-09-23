@@ -1,5 +1,7 @@
 .tagsContainer {
   width: 100%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .tag {
@@ -7,4 +9,12 @@
   cursor: pointer;
   padding-top: 1%;
   padding-bottom: 1%;
+}
+
+.button {
+  margin-top: 5%;
+}
+
+.buttonContainer {
+  width: 100%;
 }

@@ -13,7 +13,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (currentPath === "") {
-      setSelected(options[0]);
+      setSelected(options[0].toLowerCase());
     } else setSelected(currentPath);
   }, [currentPath]);
 

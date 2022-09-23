@@ -24,7 +24,7 @@ const Header = () => {
       >
         <FaLaptopCode size={35} color={"orange"} />
         <Text className={styles.headerText} fontSize={"xl"}>
-          plebdevs
+          plebdev
         </Text>
       </Flex>
       {status === "authenticated" ? (
