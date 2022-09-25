@@ -26,11 +26,8 @@ const TagsList = ({ tags }) => {
               </Tag>
               <Box className={styles.tagDescriptionContainer}>
                 <Text className={styles.tagDescription} fontSize={"xs"}>
-                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                  Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                  {tag.description ||
+                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"}
                 </Text>
               </Box>
               <Flex flexDirection={"column"}>

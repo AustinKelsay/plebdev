@@ -11,6 +11,10 @@ const TagInfo = ({ tag }) => {
       <Tag className={styles.tag} variant={"outline"} colorScheme={"blue"}>
         {tag.name}
       </Tag>
+      <Text fontSize={"sm"}>
+        {tag.description ||
+          "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"}
+      </Text>
       <Flex className={styles.TagInfo} flexDirection={"column"}>
         <Text fontSize={"xs"}>questions: 1</Text>
         <Text fontSize={"xs"}>answers: 1</Text>

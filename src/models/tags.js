@@ -2,6 +2,7 @@ import { Schema, model, models } from "mongoose";
 
 export const tagSchema = new Schema({
   name: { type: String, required: true },
+  description: { type: String },
   parent: { type: Schema.Types.ObjectId, ref: "Questions" },
   created: { type: Date, default: Date.now },
 });

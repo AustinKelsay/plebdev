@@ -8,6 +8,9 @@ export default function handler(req, res) {
     case "GET": {
       return getTagInfoByName(req, res);
     }
+    case "PUT": {
+      return updateTagById(req, res);
+    }
     case "DELETE": {
       return deleteTagById(req, res);
     }
@@ -32,6 +35,23 @@ async function getTagInfoByName(req, res) {
 
     // send response
     res.status(200).json({ count, taggedQuestions });
+  } catch {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+}
+
+async function updateTagById(req, res) {
+  try {
+    // connect to mongo
+    await connectMongo();
+
+    // update tag
+    const updatedTag = await Tags.findByIdAndUpdate(req.query.slug, req.body, {
+      new: true,
+    });
+
+    // send response
+    res.status(200).json(updatedTag);
   } catch {
     res.status(500).json({ error: "Something went wrong" });
   }
