@@ -3,6 +3,7 @@ import { Box, Flex, Text, Tag, Button } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { deleteQuestion } from "../../../redux/questionsReducer";
 import { useRouter } from "next/router";
+import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 import styles from "./styles.module.css";
 
 const QuestionFull = ({ question, status }) => {
@@ -31,9 +32,10 @@ const QuestionFull = ({ question, status }) => {
             <Text fontSize={"xs"}>Votes {question.score}</Text>
           </Flex>
         </Box>
-        <Text mt={"2%"} mb={"2%"} fontSize={"md"}>
+        {/* <Text mt={"2%"} mb={"2%"} fontSize={"md"}>
           {question.description}
-        </Text>
+        </Text> */}
+        <MarkdownDisplay markdown={question.description} />
         <Flex
           className={styles.tagsContainer}
           flexDirection={"row"}

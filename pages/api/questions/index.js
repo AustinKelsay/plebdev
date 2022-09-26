@@ -32,7 +32,7 @@ async function getQuestions(req, res) {
 async function addQuestion(req, res) {
   try {
     await connectMongo();
-    console.log(req.body);
+
     const newQuestion = await Questions.create(req.body);
 
     res.status(201).json(newQuestion);
