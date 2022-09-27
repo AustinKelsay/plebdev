@@ -9,7 +9,6 @@
 }
 
 .question {
-  padding: 2%;
   border-bottom: 1px solid #e6e6e6;
   border-top: 1px solid #e6e6e6;
 }
@@ -29,7 +28,12 @@
 
 .questionDescription {
   margin-top: 1%;
-  font-weight: normal;
+}
+
+.codeBlock {
+  white-space: pre-wrap;
+  margin-top: 1%;
+  border-radius: 10px;
 }
 
 .questionCreated {

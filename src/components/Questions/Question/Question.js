@@ -35,29 +35,23 @@ const Question = ({
               description.split("```").map((item, index) => {
                 // if the index is even then we return the text
                 if (index % 2 === 0) {
-                  return <Text>{item}</Text>;
-                } else {
-                  // if the index is odd then we return the code component
-                  // We also need to format the code block properly
-                  // so we split the code block by new line and then join it back together
-                  // with the new line character
                   return (
-                    // we also need the overflow to be hidden so that the code block doesn't
-                    // overflow the container
+                    <Text className={styles.questionDescription}>{item}</Text>
+                  );
+                } else {
+                  // get rid of the 'js' from the code block and remove the new line at the top where the code block starts
+                  const code = item.replace("js", "").replace("\n", "");
+                  return (
                     <Box overflow={"hidden"}>
-                      <Code noOfLines={4} whiteSpace={"pre-wrap"}>
-                        {item}
+                      <Code className={styles.codeBlock} noOfLines={4}>
+                        {code}
                       </Code>
                     </Box>
                   );
                 }
               })
             ) : (
-              <Text
-                noOfLines={2}
-                className={styles.questionDescription}
-                fontSize={"sm"}
-              >
+              <Text noOfLines={4} className={styles.questionDescription}>
                 {description}
               </Text>
             )}
