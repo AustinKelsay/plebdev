@@ -22,19 +22,16 @@ export default function handler(req, res) {
 
 async function getTagInfoByName(req, res) {
   try {
-    // connect to mongo
     await connectMongo();
 
     // const count = await Tags.countDocuments({ name: req.query.slug });
 
-    const parents = await Tags.find({ id: req.query.slug }).select("parent");
+    const tag = await Tags.findOne({ _id: req.query.slug });
 
-    const parentIds = parents.map((parent) => parent.parent);
+    // Get all the questions with this tag.name
+    const questions = await Questions.find({ tags: tag.name });
 
-    const taggedQuestions = await Questions.find({ id: { $in: parentIds } });
-
-    // send response
-    res.status(200).json(taggedQuestions);
+    res.status(200).json(questions);
   } catch {
     res.status(500).json({ error: "Something went wrong" });
   }
@@ -42,15 +39,12 @@ async function getTagInfoByName(req, res) {
 
 async function updateTagById(req, res) {
   try {
-    // connect to mongo
     await connectMongo();
 
-    // update tag
     const updatedTag = await Tags.findByIdAndUpdate(req.query.slug, req.body, {
       new: true,
     });
 
-    // send response
     res.status(200).json(updatedTag);
   } catch {
     res.status(500).json({ error: "Something went wrong" });
@@ -59,7 +53,6 @@ async function updateTagById(req, res) {
 
 async function deleteTagById(req, res) {
   try {
-    // connect to mongo
     await connectMongo();
 
     const deletedTag = await Tags.findByIdAndDelete(req.query.slug);
