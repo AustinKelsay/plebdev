@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Grid, GridItem, Flex, Text, Box, Tag } from "@chakra-ui/react";
+import { Grid, GridItem, Flex, Text, Box, Tag, Code } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 
@@ -29,13 +29,38 @@ const Question = ({
                 {title}
               </Link>
             </Text>
-            <Text
-              noOfLines={2}
-              className={styles.questionDescription}
-              fontSize={"sm"}
-            >
-              {description}
-            </Text>
+            {/* If the description is wrapped in markdown code block then we return code component */}
+            {description.includes("```") ? (
+              // iterate over the description and split it by the markdown code block
+              description.split("```").map((item, index) => {
+                // if the index is even then we return the text
+                if (index % 2 === 0) {
+                  return <Text>{item}</Text>;
+                } else {
+                  // if the index is odd then we return the code component
+                  // We also need to format the code block properly
+                  // so we split the code block by new line and then join it back together
+                  // with the new line character
+                  return (
+                    // we also need the overflow to be hidden so that the code block doesn't
+                    // overflow the container
+                    <Box overflow={"hidden"}>
+                      <Code noOfLines={4} whiteSpace={"pre-wrap"}>
+                        {item}
+                      </Code>
+                    </Box>
+                  );
+                }
+              })
+            ) : (
+              <Text
+                noOfLines={2}
+                className={styles.questionDescription}
+                fontSize={"sm"}
+              >
+                {description}
+              </Text>
+            )}
             <Text className={styles.questionCreated} fontSize={"xs"}>
               {created}
             </Text>
