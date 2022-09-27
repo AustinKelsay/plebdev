@@ -29,7 +29,11 @@ const Question = ({
                 {title}
               </Link>
             </Text>
-            <Text className={styles.questionDescription} fontSize={"sm"}>
+            <Text
+              noOfLines={2}
+              className={styles.questionDescription}
+              fontSize={"sm"}
+            >
               {description}
             </Text>
             <Text className={styles.questionCreated} fontSize={"xs"}>
