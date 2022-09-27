@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, Flex, Tag, Box } from "@chakra-ui/react";
 import styles from "./styles.module.css";
+import TaggedQuestions from "../TaggedQuestions/TaggedQuestions";
 
 const TagInfo = ({ tag }) => {
   return (
-    <Box>
+    <Box className={styles.tagInfoContainer}>
       <Text className={styles.componentTitle} fontSize={"3xl"}>
         Tags
       </Text>
@@ -15,10 +16,10 @@ const TagInfo = ({ tag }) => {
         {tag.description ||
           "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"}
       </Text>
-      <Flex className={styles.TagInfo} flexDirection={"column"}>
-        <Text fontSize={"xs"}>questions: 1</Text>
-        <Text fontSize={"xs"}>answers: 1</Text>
-      </Flex>
+      <Text className={styles.questionsTitle} mt={"5%"} fontSize={"nm"}>
+        Questions: 1
+      </Text>
+      <TaggedQuestions tag={tag} />
     </Box>
   );
 };

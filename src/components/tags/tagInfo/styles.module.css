@@ -1,6 +1,9 @@
+.tagInfoContainer {
+  padding: 2%;
+}
+
 .componentTitle {
   border-bottom: 1px solid #e6e6e6;
-  padding-left: 2%;
   margin: 2% auto;
 }
 
@@ -12,4 +15,10 @@
 .tagInfo {
   margin: 2% auto;
   margin-top: 10%;
+}
+
+.questionsTitle {
+  padding: 1%;
+  font-weight: bolder;
+  border-bottom: 1px solid #e6e6e6;
 }

@@ -25,16 +25,16 @@ async function getTagInfoByName(req, res) {
     // connect to mongo
     await connectMongo();
 
-    const count = await Tags.countDocuments({ name: req.query.name });
+    // const count = await Tags.countDocuments({ name: req.query.slug });
 
-    const parentIds = await Tags.find({ name: req.query.name }).select(
-      "parent"
-    );
+    const parents = await Tags.find({ id: req.query.slug }).select("parent");
 
-    const taggedQuestions = await Questions.findAllById(parentIds);
+    const parentIds = parents.map((parent) => parent.parent);
+
+    const taggedQuestions = await Questions.find({ id: { $in: parentIds } });
 
     // send response
-    res.status(200).json({ count, taggedQuestions });
+    res.status(200).json(taggedQuestions);
   } catch {
     res.status(500).json({ error: "Something went wrong" });
   }
