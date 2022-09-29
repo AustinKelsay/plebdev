@@ -29,27 +29,11 @@ const Question = ({
                 {title}
               </Link>
             </Text>
-            {/* If the description is wrapped in markdown code block then we return code component */}
             {description.includes("```") ? (
-              // iterate over the description and split it by the markdown code block
-              description.split("```").map((item, index) => {
-                // if the index is even then we return the text
-                if (index % 2 === 0) {
-                  return (
-                    <Text className={styles.questionDescription}>{item}</Text>
-                  );
-                } else {
-                  // get rid of the 'js' from the code block and remove the new line at the top where the code block starts
-                  const code = item.replace("js", "").replace("\n", "");
-                  return (
-                    <Box overflow={"hidden"}>
-                      <Code className={styles.codeBlock} noOfLines={4}>
-                        {code}
-                      </Code>
-                    </Box>
-                  );
-                }
-              })
+              // return everything not in the code block
+              <Text className={styles.questionDescription}>
+                {description.split("```")[0]}
+              </Text>
             ) : (
               <Text noOfLines={4} className={styles.questionDescription}>
                 {description}
