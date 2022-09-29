@@ -36,7 +36,11 @@ const Header = () => {
           justifyContent={"space-between"}
         >
           <Flex
-            className={styles.userContainer}
+            className={
+              router.pathname.includes("/profile")
+                ? styles.userContainerActive
+                : styles.userContainer
+            }
             onClick={() => router.push(`/profile/${session.user.username}`)}
             justifyContent={"flex-start"}
             flexDirection={"row"}

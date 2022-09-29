@@ -67,7 +67,7 @@ const Question = ({
             alignSelf={"center"}
             flexDirection={"row"}
           >
-            <Image w={"10%"} src={author.profilePhoto} alt={author.username} />
+            <Image w={"15%"} src={author.profilePhoto} alt={author.username} />
             <Text
               className={styles.questionAuthorName}
               alignSelf={"center"}

@@ -33,6 +33,13 @@
   cursor: pointer;
 }
 
+.userContainerActive {
+  padding: 2%;
+  border: 1px solid orange;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .username {
   margin-left: 2%;
   align-self: center;
