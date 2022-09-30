@@ -54,14 +54,17 @@ const QuestionForm = ({ tags }) => {
 
       axios
         .post("/api/questions", { ...formData, author: userData })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          router.push("/questions");
         })
         .catch((err) => {
           console.log(err);
+          const errorMessages = err.response.data.errors.map((error) => {
+            return error.msg;
+          });
+          alert("Something went wrong", { errorMessages });
         });
     }
-    router.push("/questions");
   };
 
   return (

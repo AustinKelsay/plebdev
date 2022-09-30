@@ -31,6 +31,12 @@ async function getAllTags(req, res) {
 
 // Add tag
 async function addTags(req, res) {
+  const session = await unstable_getServerSession(req, res, authOptions);
+
+  if (!session) {
+    res.status(401).json({ message: "You must be logged in." });
+    return;
+  }
   try {
     await connectMongo();
 

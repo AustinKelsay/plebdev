@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../src/components/layout";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
+import { useSession } from "next-auth/react";
 import "../styles/globals.css";
 
 export default function App({
@@ -14,10 +15,27 @@ export default function App({
       <SessionProvider session={session}>
         <ChakraProvider>
           <Layout>
-            <Component {...pageProps} />
+            {Component.auth ? (
+              <Auth>
+                <Component {...pageProps} />
+              </Auth>
+            ) : (
+              <Component {...pageProps} />
+            )}
           </Layout>
         </ChakraProvider>
       </SessionProvider>
     </Provider>
   );
+}
+
+function Auth({ children }) {
+  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
+  const { status } = useSession({ required: true });
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  return children;
 }

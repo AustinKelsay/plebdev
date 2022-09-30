@@ -5,7 +5,7 @@ import GithubProvider from "next-auth/providers/github";
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 
-export default NextAuth({
+export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
@@ -32,4 +32,6 @@ export default NextAuth({
       }
     },
   },
-});
+};
+
+export default NextAuth(authOptions);
