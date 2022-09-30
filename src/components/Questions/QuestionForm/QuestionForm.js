@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 import "@uiw/react-markdown-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import styles from "./styles.module.css";
+import MarkdownForm from "../../Markdown/MarkdownForm/MarkdownForm";
 
 const MarkdownEditor = dynamic(
   () => import("@uiw/react-markdown-editor").then((mod) => mod),
@@ -79,17 +80,10 @@ const QuestionForm = ({ tags }) => {
             type="text"
           />
           <FormLabel>Description</FormLabel>
-          <div className={styles.markdownContainer}>
-            {(
-              <MarkdownEditor
-                height={300}
-                value={formData.description}
-                onChange={handleMarkdownChange}
-                name="description"
-                type="markdown"
-              />
-            ) || <Loading />}
-          </div>
+          <MarkdownForm
+            markdown={formData.description}
+            handleChange={handleMarkdownChange}
+          />
           <TagsInput
             formData={formData}
             setFormData={setFormData}

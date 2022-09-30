@@ -5,6 +5,7 @@ import { deleteQuestion } from "../../../redux/questionsReducer";
 import { useRouter } from "next/router";
 import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 import styles from "./styles.module.css";
+import AnswersForm from "../../Answers/AnswersForm/AnswersForm";
 
 const QuestionFull = ({ question, status }) => {
   const dispatch = useDispatch();
@@ -68,6 +69,10 @@ const QuestionFull = ({ question, status }) => {
           </Button>
         </Flex>
       ) : null}
+      <Text fontWeight={"bold"} fontSize={"2xl"}>
+        Your Answer
+      </Text>
+      <AnswersForm />
     </Box>
   );
 };
