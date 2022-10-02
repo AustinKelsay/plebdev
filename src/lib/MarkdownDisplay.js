@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+// import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const MarkdownDisplay = ({ markdown }) => {
   return (
@@ -13,7 +13,7 @@ const MarkdownDisplay = ({ markdown }) => {
           return !inline && match ? (
             <SyntaxHighlighter
               children={String(children).replace(/\n$/, "")}
-              style={a11yDark}
+              // style={a11yDark}
               language={match[1]}
               PreTag="div"
               {...props}

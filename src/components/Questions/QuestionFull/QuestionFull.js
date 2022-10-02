@@ -58,7 +58,7 @@ const QuestionFull = ({ question, status }) => {
         <Flex
           className={styles.buttonContainer}
           flexDirection={"row"}
-          justifyContent={"flex-end"}
+          justifyContent={"flex-start"}
         >
           <Button
             onClick={handleDelete}
@@ -69,10 +69,13 @@ const QuestionFull = ({ question, status }) => {
           </Button>
         </Flex>
       ) : null}
-      <Text fontWeight={"bold"} fontSize={"2xl"}>
+      <Text className={styles.answerText} fontWeight={"bold"} fontSize={"2xl"}>
         Your Answer
       </Text>
       <AnswersForm />
+      <Text className={styles.answerText} fontWeight={"bold"} fontSize={"2xl"}>
+        X Answers
+      </Text>
     </Box>
   );
 };
