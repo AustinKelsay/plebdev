@@ -10,13 +10,14 @@ import QuestionFull from "../../src/components/Questions/QuestionFull/QuestionFu
 
 const Question = () => {
   const { data: session, status } = useSession();
+  const dispatch = useDispatch();
   const { slug } = useRouter().query;
   const [question, setQuestion] = useState(null);
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const [answers, setAnswers] = useState(null);
 
   useEffect(() => {
-    axios
+    if (typeof slug !== 'undefined') {
+      axios
       .get(`http://localhost:3000/api/questions/${slug}`)
       .then((res) => {
         setQuestion(res.data);
@@ -24,12 +25,26 @@ const Question = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [slug, question]);
+    }
+  }, [slug]);
+
+  useEffect(() => {
+    if (typeof slug !== 'undefined') {
+      axios
+      .get(`http://localhost:3000/api/answers/${slug}`)
+      .then((res) => {
+        setAnswers(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, [slug]);
 
   return (
     <div>
       {question ? (
-        <QuestionFull question={question} status={status} />
+        <QuestionFull question={question} answers={answers} status={status} />
       ) : (
         <Loading />
       )}

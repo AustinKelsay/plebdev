@@ -5,7 +5,7 @@ export default function handler(req, res) {
   // switch the methods
   switch (req.method) {
     case "GET": {
-      return getUserByUsername(req, res);
+      return getUserByID(req, res);
     }
     case "PUT": {
       return updateUser(req, res);
@@ -20,13 +20,13 @@ export default function handler(req, res) {
 }
 
 // Get user by id
-async function getUserByUsername(req, res) {
+async function getUserByID(req, res) {
   try {
     // connect to mongo
     await connectMongo();
 
     // get user by id
-    const user = await Users.findOne({ username: req.query.slug });
+    const user = await Users.findOne({ _id: req.query.slug });
 
     // send response
     res.status(200).json(user);

@@ -1,0 +1,54 @@
+.gridItemLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.gridItemLeft p {
+  margin: 1% auto;
+}
+
+.answer {
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+}
+
+.answer a {
+  color: #00bcd4;
+  text-decoration: underline;
+}
+
+.answerInfoRow {
+  width: 100%;
+}
+
+.answerDescription {
+  margin-top: 1%;
+}
+
+.codeBlock {
+  white-space: pre-wrap;
+  margin-top: 1%;
+  border-radius: 10px;
+}
+
+.answerCreated {
+  margin-top: 1%;
+  font-weight: normal;
+  color: grey;
+}
+
+.tag {
+  cursor: pointer;
+  margin: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-left: 0;
+}
+
+.answerAuthorName {
+  font-weight: normal;
+  color: grey;
+  margin-left: 1%;
+  margin-right: 2%;
+}

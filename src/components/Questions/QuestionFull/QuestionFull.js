@@ -6,10 +6,13 @@ import { useRouter } from "next/router";
 import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 import styles from "./styles.module.css";
 import AnswersForm from "../../Answers/AnswersForm/AnswersForm";
+import AnswersList from "../../Answers/AnswersList/AnswersList";
 
-const QuestionFull = ({ question, status }) => {
+const QuestionFull = ({ question, answers, status }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+
+  // console.log("answersss", answers);
 
   const handleDelete = () => {
     dispatch(deleteQuestion(router.query.slug));
@@ -73,9 +76,18 @@ const QuestionFull = ({ question, status }) => {
         Your Answer
       </Text>
       <AnswersForm />
-      <Text className={styles.answerText} fontWeight={"bold"} fontSize={"2xl"}>
-        X Answers
-      </Text>
+      {answers ? (
+        <Box>
+          <Text
+            className={styles.answerText}
+            fontWeight={"bold"}
+            fontSize={"2xl"}
+          >
+            {answers.length} Answers
+          </Text>
+          <AnswersList answers={answers} />
+        </Box>
+      ) : null}
     </Box>
   );
 };
