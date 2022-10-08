@@ -1,0 +1,13 @@
+.questionsHeader {
+  width: 100%;
+  padding: 2%;
+}
+
+.filtersContainer {
+  width: 60%;
+}
+
+.tag {
+  cursor: pointer;
+  border-radius: 0;
+}

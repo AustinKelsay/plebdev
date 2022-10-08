@@ -4,9 +4,14 @@ import Loading from "../../Loading/Loading";
 import { Text, Box, Flex, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
+import QuestionsHeader from "../QuestionsHeader/QuestionsHeader";
 
 const QuestionsList = ({ questions }) => {
   const router = useRouter();
+  // Reorder the questions by date
+  const sortedQuestions = questions.sort((a, b) => {
+    return new Date(b.created) - new Date(a.created);
+  });
   return (
     <Box>
       <Flex
@@ -24,8 +29,9 @@ const QuestionsList = ({ questions }) => {
           Ask a question
         </Button>
       </Flex>
+      <QuestionsHeader count={questions.length} />
       {questions.length ? (
-        questions.map((q) => <Question key={q.id} {...q} />)
+        sortedQuestions.map((q) => <Question key={q.id} {...q} />)
       ) : (
         <Loading />
       )}
