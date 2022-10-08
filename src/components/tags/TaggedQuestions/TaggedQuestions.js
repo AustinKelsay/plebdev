@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Text } from "@chakra-ui/react";
 import axios from "axios";
 import Question from "../../Questions/Question/Question";
+import styles from "./styles.module.css";
 
 const TaggedQuestions = ({ tag }) => {
   const [questions, setQuestions] = useState([]);
@@ -22,6 +24,9 @@ const TaggedQuestions = ({ tag }) => {
 
   return (
     <div>
+      <Text className={styles.questionsCount} mt={"5%"} fontSize={"nm"}>
+        Questions: {questions.length}
+      </Text>
       {questions.map((question) => {
         return (
           <Question

@@ -16,9 +16,6 @@ const TagInfo = ({ tag }) => {
         {tag.description ||
           "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"}
       </Text>
-      <Text className={styles.questionsTitle} mt={"5%"} fontSize={"nm"}>
-        Questions: 1
-      </Text>
       <TaggedQuestions tag={tag} />
     </Box>
   );
