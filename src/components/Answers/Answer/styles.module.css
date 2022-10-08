@@ -26,6 +26,11 @@
   margin-top: 1%;
 }
 
+.votesContainer {
+  width: fit-content;
+  height: fit-content;
+}
+
 .codeBlock {
   white-space: pre-wrap;
   margin-top: 1%;
@@ -44,6 +49,17 @@
   padding-top: 1%;
   padding-bottom: 1%;
   margin-left: 0;
+}
+
+.answerAuthorContainer {
+  width: 100%;
+  cursor: pointer;
+  margin: 1%;
+  margin-top: 0;
+}
+
+.answerAuthorContainer:hover {
+  opacity: 0.7;
 }
 
 .answerAuthorName {

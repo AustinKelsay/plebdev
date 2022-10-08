@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { Grid, GridItem, Flex, Text, Box, Tag, Code } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 
-const Answer = ({ author, text, score, views, created }) => {
+const Answer = ({ author, text, votes, views, created }) => {
   const router = useRouter();
   const [user, setUser] = useState();
   useEffect(() => {
@@ -23,9 +24,16 @@ const Answer = ({ author, text, score, views, created }) => {
   return (
     <Grid templateColumns={"15% 2fr"} className={styles.answer}>
       <GridItem className={styles.gridItemLeft} colSpan={1}>
-        <Text>Votes {score}</Text>
-        <Text>Answers 0</Text>
-        <Text>Views {views}</Text>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"space-evenly"}
+          alignItems={"flex-start"}
+          className={styles.votesContainer}
+        >
+          <FaArrowUp cursor={"pointer"} />
+          <Text>{votes}</Text>
+          <FaArrowDown cursor={"pointer"} />
+        </Flex>
       </GridItem>
       <Flex flexDirection={"column"}>
         <Flex className={styles.answerInfoRow} flexDirection={"row"}>
@@ -47,7 +55,7 @@ const Answer = ({ author, text, score, views, created }) => {
         </Flex>
         {user ? (
           <Flex
-            w={"100%"}
+            className={styles.answerAuthorContainer}
             justifyContent={"flex-end"}
             alignSelf={"center"}
             flexDirection={"row"}

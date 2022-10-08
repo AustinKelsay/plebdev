@@ -2,17 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  question: {},
+  answers: [],
   loading: false,
   isSuccess: false,
 };
 
-export const getQuestion = createAsyncThunk(
-  "questions/getQuestion",
+export const getAnswers = createAsyncThunk(
+  "answers/getAnswers",
   async (slug, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/api/questions/" + slug
+        "http://localhost:3000/api/answers/" + slug
       );
       return data;
     } catch (error) {
@@ -21,24 +21,24 @@ export const getQuestion = createAsyncThunk(
   }
 );
 
-export const questionsSlice = createSlice({
-  name: "questions",
+export const answersSlice = createSlice({
+  name: "answers",
   initialState,
   reducers: {},
   extraReducers: {
-    [getQuestion.pending]: (state, action) => {
+    [getAnswers.pending]: (state, action) => {
       state.loading = true;
     },
-    [getQuestion.fulfilled]: (state, action) => {
+    [getAnswers.fulfilled]: (state, action) => {
       state.loading = false;
       state.isSuccess = true;
-      state.question = action.payload;
+      state.answers = action.payload;
     },
-    [getQuestion.rejected]: (state, action) => {
+    [getAnswers.rejected]: (state, action) => {
       state.loading = false;
       state.isSuccess = false;
     },
   },
 });
 
-export default questionsSlice.reducer;
+export default answersSlice.reducer;

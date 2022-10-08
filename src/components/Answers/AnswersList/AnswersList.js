@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 
 const AnswersList = ({ answers }) => {
-  console.log(answers)
+  console.log(answers);
   return (
     <Box>
       <Flex
-        className={styles.questionsContainer}
+        className={styles.answersContainer}
         alignItems={"center"}
         justifyContent={"space-between"}
         flexDirection={"row"}
