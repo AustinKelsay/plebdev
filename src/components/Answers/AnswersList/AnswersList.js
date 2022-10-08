@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 
 const AnswersList = ({ answers }) => {
-  console.log(answers);
+  if (answers.length === 0) {
+    return <Text>No answers yet</Text>;
+  }
   return (
     <Box>
       <Flex
