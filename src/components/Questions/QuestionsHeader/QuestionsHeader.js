@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Text, Flex, Tag } from "@chakra-ui/react";
 import axios from "axios";
 import styles from "./styles.module.css";
+import TagInfo from "../../Tags/TagInfo/TagInfo";
 
 const QuestionsHeader = ({ count }) => {
+  const [selected, setSelected] = useState("newest");
+
+  const filters = ["newest", "votes", "bountied", "unanswered"];
+
   return (
     <Flex
       alignItems={"center"}
@@ -19,38 +24,18 @@ const QuestionsHeader = ({ count }) => {
         justifyContent={"space-evenly"}
         className={styles.filtersContainer}
       >
-        <Tag
-          className={styles.tag}
-          size={"lg"}
-          variant={"subtle"}
-          colorScheme={"gray"}
-        >
-          Newest
-        </Tag>
-        <Tag
-          className={styles.tag}
-          size={"lg"}
-          variant={"subtle"}
-          colorScheme={"gray"}
-        >
-          Votes
-        </Tag>
-        <Tag
-          className={styles.tag}
-          size={"lg"}
-          variant={"subtle"}
-          colorScheme={"gray"}
-        >
-          Bountied
-        </Tag>
-        <Tag
-          className={styles.tag}
-          size={"lg"}
-          variant={"subtle"}
-          colorScheme={"gray"}
-        >
-          Unanswered
-        </Tag>
+        {filters.map((filter) => (
+          <Tag
+            className={styles.tag}
+            key={filter}
+            size={"lg"}
+            variant={selected === filter ? "solid" : "subtle"}
+            colorScheme={"gray"}
+            onClick={() => setSelected(filter)}
+          >
+            {filter}
+          </Tag>
+        ))}
       </Flex>
     </Flex>
   );
