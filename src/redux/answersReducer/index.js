@@ -21,6 +21,21 @@ export const getAnswers = createAsyncThunk(
   }
 );
 
+export const postAnswer = createAsyncThunk(
+  "answers/postAnswer",
+  async (answer, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/api/answers",
+        answer
+      );
+      return data;
+    } catch (error) {
+      rejectWithValue(error.response);
+    }
+  }
+);
+
 export const answersSlice = createSlice({
   name: "answers",
   initialState,
@@ -35,6 +50,18 @@ export const answersSlice = createSlice({
       state.answers = action.payload;
     },
     [getAnswers.rejected]: (state, action) => {
+      state.loading = false;
+      state.isSuccess = false;
+    },
+    [postAnswer.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [postAnswer.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.isSuccess = true;
+      state.answers = [...state.answers, action.payload];
+    },
+    [postAnswer.rejected]: (state, action) => {
       state.loading = false;
       state.isSuccess = false;
     },
