@@ -5,10 +5,12 @@ import { deleteQuestion } from "../../../redux/questionsReducer";
 import { getAnswers } from "../../../redux/answersReducer";
 import { getQuestion } from "../../../redux/questionsReducer";
 import { useRouter } from "next/router";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 import styles from "./styles.module.css";
 import AnswersForm from "../../Answers/AnswersForm/AnswersForm";
 import AnswersList from "../../Answers/AnswersList/AnswersList";
+import QuestionTips from "../QuestionTips/QuestionTips";
 
 const QuestionFull = ({ status }) => {
   const dispatch = useDispatch();
@@ -37,9 +39,12 @@ const QuestionFull = ({ status }) => {
         <Box className={styles.questionContainer}>
           <Flex flexDirection={"column"}>
             <Box className={styles.questionInfo}>
-              <Text fontWeight={"bold"} fontSize={"2xl"}>
-                {question.title}
-              </Text>
+              <Flex flexDirection={"row"} justifyContent={"flex-start"}>
+                <QuestionTips score={question.score} />
+                <Text fontWeight={"bold"} fontSize={"2xl"}>
+                  {question.title}
+                </Text>
+              </Flex>
               <Flex
                 className={styles.questionInfoFlex}
                 justifyContent={"space-between"}
@@ -50,7 +55,9 @@ const QuestionFull = ({ status }) => {
                 <Text fontSize={"xs"}>Votes {question.score}</Text>
               </Flex>
             </Box>
-            <MarkdownDisplay markdown={question.description} />
+            <Box className={styles.descriptionContainer}>
+              <MarkdownDisplay markdown={question.description} />
+            </Box>
             <Flex
               className={styles.tagsContainer}
               flexDirection={"row"}

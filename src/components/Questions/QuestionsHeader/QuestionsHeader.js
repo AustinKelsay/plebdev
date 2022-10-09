@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Text, Flex, Tag } from "@chakra-ui/react";
-import axios from "axios";
 import styles from "./styles.module.css";
-import TagInfo from "../../Tags/TagInfo/TagInfo";
 
 const QuestionsHeader = ({ count }) => {
   const [selected, setSelected] = useState("newest");
