@@ -5,7 +5,7 @@ export default function handler(req, res) {
   // switch the methods
   switch (req.method) {
     case "GET": {
-      return getAnswersById(req, res);
+      return getAnswerById(req, res);
     }
     case "PUT": {
       return updateAnswer(req, res);
@@ -19,28 +19,36 @@ export default function handler(req, res) {
   }
 }
 
-// Get answer by id
-async function getAnswersById(req, res) {
+async function getAnswerById(req, res) {
   try {
     await connectMongo();
-    const questionId = req.query.slug;
-    const answers = await Answers.find({ question_id: questionId });
+    const answerId = req.query.slug;
+    const answers = await Answers.find({ _id: answerId });
     res.status(200).json(answers);
   } catch {
     res.status(500).json({ msg: "Something went wrong" });
   }
 }
 
-// Update answer
 async function updateAnswer(req, res) {
   try {
     await connectMongo();
 
-    const { text } = req.body;
-
     const answerId = req.query.slug;
 
-    const updatedAnswer = Answers.findByIdAndUpdate(answerId, { text });
+    let paramsToUpdate = {};
+
+    if (req.body.text) {
+      paramsToUpdate = { ...paramsToUpdate, text: req.body.text };
+    } else if (req.body.votes) {
+      paramsToUpdate = { ...paramsToUpdate, votes: req.body.votes };
+    }
+
+    const updatedAnswer = await Answers.findByIdAndUpdate(
+      answerId,
+      paramsToUpdate,
+      { new: true }
+    );
 
     res.status(200).json(updatedAnswer);
   } catch (err) {
@@ -48,7 +56,6 @@ async function updateAnswer(req, res) {
   }
 }
 
-// Delete answer
 async function deleteAnswer(req, res) {
   try {
     await connectMongo();

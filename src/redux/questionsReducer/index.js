@@ -55,17 +55,14 @@ export const questionsSlice = createSlice({
     },
     [tipQuestion.pending]: (state, action) => {
       state.loading = true;
-      console.log("loading");
     },
     [tipQuestion.fulfilled]: (state, action) => {
       state.loading = false;
       state.isSuccess = true;
-      console.log("success");
     },
     [tipQuestion.rejected]: (state, action) => {
       state.loading = false;
       state.isSuccess = false;
-      console.log("rejected");
     },
   },
 });

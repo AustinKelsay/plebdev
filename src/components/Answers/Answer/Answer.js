@@ -8,14 +8,13 @@ import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 import AnswerTips from "../AnswerTips/AnswerTips";
 
-const Answer = ({ author, text, votes, views, created }) => {
+const Answer = ({ author, text, votes, views, created, id }) => {
   const router = useRouter();
   const [user, setUser] = useState();
   useEffect(() => {
     axios
       .get(`http://localhost:3000/api/users/${author}`)
       .then((res) => {
-        console.log(res.data);
         setUser(res.data);
       })
       .catch((err) => {
@@ -28,7 +27,7 @@ const Answer = ({ author, text, votes, views, created }) => {
       justifyContent={"space-between"}
       className={styles.answer}
     >
-      <AnswerTips votes={votes} />
+      <AnswerTips votes={votes} id={id} />
       <Flex w={"100%"} flexDirection={"column"}>
         <Flex
           className={styles.answerInfoRow}
