@@ -43,7 +43,7 @@ export const tipAnswer = createAsyncThunk(
     try {
       const { data } = await axios.put(
         "http://localhost:3000/api/answers/" + id,
-        { votes: total }
+        { votes: tip }
       );
       return data;
     } catch (error) {

@@ -27,7 +27,7 @@ const Answer = ({ author, text, votes, views, created, id }) => {
       justifyContent={"space-between"}
       className={styles.answer}
     >
-      <AnswerTips votes={votes} id={id} />
+      <AnswerTips id={id} />
       <Flex w={"100%"} flexDirection={"column"}>
         <Flex
           className={styles.answerInfoRow}

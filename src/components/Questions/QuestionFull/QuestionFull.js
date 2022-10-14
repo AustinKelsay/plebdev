@@ -25,17 +25,14 @@ const QuestionFull = ({ status }) => {
   useEffect(() => {
     if (typeof slug !== "undefined") {
       dispatch(getQuestion(slug));
-      dispatch(getAnswers(slug));
     }
   }, [slug, dispatch]);
 
   const question = useSelector((state) => state.questions.question);
 
-  const answers = useSelector((state) => state.answers.answers);
-
   return (
     <>
-      {question?.tags && answers && (
+      {question?.tags && (
         <Box className={styles.questionContainer}>
           <Flex flexDirection={"column"}>
             <Box className={styles.questionInfo}>
@@ -98,18 +95,7 @@ const QuestionFull = ({ status }) => {
             Your Answer
           </Text>
           <AnswersForm />
-          {answers ? (
-            <Box>
-              <Text
-                className={styles.answerText}
-                fontWeight={"bold"}
-                fontSize={"2xl"}
-              >
-                {answers.length} Answers
-              </Text>
-              <AnswersList answers={answers} />
-            </Box>
-          ) : null}
+          <AnswersList />
         </Box>
       )}
     </>

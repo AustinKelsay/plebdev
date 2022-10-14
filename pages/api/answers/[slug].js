@@ -41,7 +41,7 @@ async function updateAnswer(req, res) {
     if (req.body.text) {
       paramsToUpdate = { ...paramsToUpdate, text: req.body.text };
     } else if (req.body.votes) {
-      paramsToUpdate = { ...paramsToUpdate, votes: req.body.votes };
+      paramsToUpdate = { ...paramsToUpdate, $inc: { votes: req.body.votes } };
     }
 
     const updatedAnswer = await Answers.findByIdAndUpdate(

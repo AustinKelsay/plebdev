@@ -1,15 +1,23 @@
-import React, { useState } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Flex, Text, useEditable } from "@chakra-ui/react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import ClipLoader from "react-spinners/ClipLoader";
 import { tipAnswer } from "../../../redux/answersReducer";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 
-const AnswerTips = ({ votes, id }) => {
+const AnswerTips = ({ id }) => {
   const dispatch = useDispatch();
 
+  const votes = useSelector(
+    (state) => state.answers.answers.filter((a) => a.id === id)[0].votes
+  );
+
   const [currentScore, setCurrentScore] = useState(votes);
+
+  // useEffect(() => {
+  //   console.log(currentScore);
+  // }, [currentScore]);
 
   const loading = useSelector((state) => state.answers.loading);
 
@@ -22,6 +30,7 @@ const AnswerTips = ({ votes, id }) => {
     dispatch(tipAnswer(requestObject))
       .unwrap()
       .then((res) => {
+        console.log(res);
         setCurrentScore(res.votes);
       })
       .catch((rejectedValueOrSerializedError) => {
