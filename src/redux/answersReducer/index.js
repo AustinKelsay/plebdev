@@ -38,8 +38,7 @@ export const postAnswer = createAsyncThunk(
 
 export const tipAnswer = createAsyncThunk(
   "answers/upvote",
-  async ({ votes, tip, id }, { rejectWithValue }) => {
-    const total = votes + tip;
+  async ({ tip, id }, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(
         "http://localhost:3000/api/answers/" + id,
@@ -87,12 +86,6 @@ export const answersSlice = createSlice({
     [tipAnswer.fulfilled]: (state, action) => {
       state.loading = false;
       state.isSuccess = true;
-      // state.answers = state.answers.map((answer) => {
-      //   if (answer._id === action.payload._id) {
-      //     return action.payload;
-      //   }
-      //   return answer;
-      // });
     },
     [tipAnswer.rejected]: (state, action) => {
       state.loading = false;

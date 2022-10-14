@@ -1,8 +1,7 @@
-import connectMongo from "../../../src/lib/connectMongo";
-import Questions from "../../../src/models/question";
+import connectMongo from "../../../../src/lib/connectMongo";
+import Questions from "../../../../src/models/question";
 
 export default function handler(req, res) {
-  // switch the methods
   switch (req.method) {
     case "GET": {
       return getQuestionById(req, res);
@@ -19,7 +18,6 @@ export default function handler(req, res) {
   }
 }
 
-// Get question by id
 async function getQuestionById(req, res) {
   try {
     await connectMongo();
@@ -45,14 +43,21 @@ async function getQuestionById(req, res) {
   }
 }
 
-// Update question
 async function updateQuestion(req, res) {
   try {
     await connectMongo();
 
+    let paramsToUpdate = {};
+
+    if (req.body.score) {
+      paramsToUpdate = { ...paramsToUpdate, $inc: { score: req.body.score } };
+    } else {
+      paramsToUpdate = { ...paramsToUpdate, ...req.body };
+    }
+
     const updatedQuestion = await Questions.findByIdAndUpdate(
       req.query.slug,
-      req.body,
+      paramsToUpdate,
       { new: true }
     );
 
@@ -62,7 +67,6 @@ async function updateQuestion(req, res) {
   }
 }
 
-// Delete question
 async function deleteQuestion(req, res) {
   try {
     await connectMongo();

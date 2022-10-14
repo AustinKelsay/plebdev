@@ -7,10 +7,12 @@ import { useRouter } from "next/router";
 import ClipLoader from "react-spinners/ClipLoader";
 import styles from "./styles.module.css";
 
-const QuestionTips = ({ score }) => {
+const QuestionTips = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { slug } = router.query;
+
+  const score = useSelector((state) => state.questions.question.score);
 
   const [currentScore, setCurrentScore] = useState(score);
 
@@ -20,7 +22,6 @@ const QuestionTips = ({ score }) => {
     const requestObject = {
       slug,
       tip,
-      score,
     };
     dispatch(tipQuestion(requestObject))
       .unwrap()

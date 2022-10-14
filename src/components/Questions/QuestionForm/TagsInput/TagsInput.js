@@ -24,7 +24,6 @@ const TagsInput = ({ formData, setFormData, query, setQuery, filterState }) => {
 
   const addTag = (tag) => {
     if (!formData.tags.includes(tag)) {
-      console.log(tag);
       setFormData({ ...formData, tags: [...formData.tags, tag] });
       setQuery("");
     }

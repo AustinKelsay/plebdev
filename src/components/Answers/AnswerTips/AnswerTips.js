@@ -15,22 +15,16 @@ const AnswerTips = ({ id }) => {
 
   const [currentScore, setCurrentScore] = useState(votes);
 
-  // useEffect(() => {
-  //   console.log(currentScore);
-  // }, [currentScore]);
-
   const loading = useSelector((state) => state.answers.loading);
 
   const handleTip = (tip) => {
     const requestObject = {
       id,
       tip,
-      votes,
     };
     dispatch(tipAnswer(requestObject))
       .unwrap()
       .then((res) => {
-        console.log(res);
         setCurrentScore(res.votes);
       })
       .catch((rejectedValueOrSerializedError) => {

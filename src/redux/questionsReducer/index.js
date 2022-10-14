@@ -23,12 +23,13 @@ export const getQuestion = createAsyncThunk(
 
 export const tipQuestion = createAsyncThunk(
   "questions/upvote",
-  async (params, { rejectWithValue }) => {
+  async ({ slug, tip }, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(
-        "http://localhost:3000/api/questions/" + params.slug,
-        { score: params.score + params.tip }
+        "http://localhost:3000/api/questions/" + slug,
+        { score: tip }
       );
+      console.log(data);
       return data;
     } catch (error) {
       rejectWithValue(error.response);
