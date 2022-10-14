@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Flex, Text, useEditable } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Flex, Text } from "@chakra-ui/react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import ClipLoader from "react-spinners/ClipLoader";
 import { tipAnswer } from "../../../redux/answersReducer";

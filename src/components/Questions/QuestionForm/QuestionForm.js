@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Flex, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
-import Loading from "../../Loading/Loading";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import TagsInput from "./TagsInput/TagsInput";
-import dynamic from "next/dynamic";
-import "@uiw/react-markdown-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
-import styles from "./styles.module.css";
 import MarkdownForm from "../../Markdown/MarkdownForm/MarkdownForm";
-
-const MarkdownEditor = dynamic(
-  () => import("@uiw/react-markdown-editor").then((mod) => mod),
-  { ssr: false }
-);
+import styles from "./styles.module.css";
 
 const QuestionForm = ({ tags }) => {
   const { data: session, status } = useSession();

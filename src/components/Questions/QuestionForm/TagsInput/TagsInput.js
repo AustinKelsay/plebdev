@@ -10,7 +10,6 @@ import {
   Tag,
   Box,
   TagRightIcon,
-  StylesProvider,
 } from "@chakra-ui/react";
 import { FaPlus } from "react-icons/fa";
 import styles from "./styles.module.css";

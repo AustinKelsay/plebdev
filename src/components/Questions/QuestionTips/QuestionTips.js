@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Text, Box } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { tipQuestion } from "../../../redux/questionsReducer";
 import { useDispatch, useSelector } from "react-redux";

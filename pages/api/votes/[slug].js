@@ -3,7 +3,6 @@ import Answers from "../../../src/models/answer";
 import Votes from "../../../src/models/vote";
 
 export default function handler(req, res) {
-  // switch the methods
   switch (req.method) {
     case "POST": {
       return upvote(req, res);

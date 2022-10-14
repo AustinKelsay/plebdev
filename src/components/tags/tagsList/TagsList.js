@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Flex, Tag, Grid, Box } from "@chakra-ui/react";
+import { Text, Flex, Tag, Box } from "@chakra-ui/react";
 import Link from "next/link";
 import styles from "./styles.module.css";
 

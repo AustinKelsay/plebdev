@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { Grid, GridItem, Flex, Text, Box, Tag, Code } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";

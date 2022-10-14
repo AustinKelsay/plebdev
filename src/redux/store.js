@@ -2,13 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import questionsReducer from "./questionsReducer";
 import answersReducer from "./answersReducer";
-import userReducer from "./userReducer";
+import usersReducer from "./usersReducer";
 
 export const store = configureStore({
   reducer: {
     questions: questionsReducer,
     answers: answersReducer,
-    users: userReducer,
+    users: usersReducer,
   },
   middleware: [thunk],
 });

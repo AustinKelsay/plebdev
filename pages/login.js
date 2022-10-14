@@ -3,14 +3,8 @@ import { Flex, Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, checkIfUserExists } from "../src/redux/userReducer";
 
 const Login = () => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const { data: session } = useSession();
-  const user = useSelector((state) => state.users);
-
   const handleSubmit = async () => {
     const user = await signIn();
   };

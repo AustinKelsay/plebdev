@@ -2,7 +2,6 @@ import connectMongo from "../../../src/lib/connectMongo";
 import Tags from "../../../src/models/tags";
 
 export default function handler(req, res) {
-  // switch the methods
   switch (req.method) {
     case "GET": {
       return getAllTags(req, res);
@@ -16,7 +15,6 @@ export default function handler(req, res) {
   }
 }
 
-// Get all tags
 async function getAllTags(req, res) {
   try {
     await connectMongo();
@@ -29,7 +27,6 @@ async function getAllTags(req, res) {
   }
 }
 
-// Add tag
 async function addTags(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions);
 

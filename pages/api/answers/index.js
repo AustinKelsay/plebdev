@@ -1,9 +1,7 @@
 import connectMongo from "../../../src/lib/connectMongo";
-import Questions from "../../../src/models/question";
 import Answers from "../../../src/models/answer";
 
 export default function handler(req, res) {
-  // switch the methods
   switch (req.method) {
     case "POST": {
       return addAnswer(req, res);
@@ -14,7 +12,6 @@ export default function handler(req, res) {
   }
 }
 
-// Add answer
 async function addAnswer(req, res) {
   try {
     await connectMongo();

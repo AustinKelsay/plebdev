@@ -6,7 +6,6 @@ import { postAnswer } from "../../../redux/answersReducer";
 import { useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import MarkdownForm from "../../Markdown/MarkdownForm/MarkdownForm";
-import axios from "axios";
 
 const AnswersForm = () => {
   const { data: session, status } = useSession();

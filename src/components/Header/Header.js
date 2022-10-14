@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { FaLaptopCode } from "react-icons/fa";
 import { Flex, Button, Text, Box } from "@chakra-ui/react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 

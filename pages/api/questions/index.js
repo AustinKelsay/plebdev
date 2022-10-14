@@ -4,7 +4,6 @@ import { authOptions } from "../auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
 
 export default function handler(req, res) {
-  // switch the methods
   switch (req.method) {
     case "GET": {
       return getQuestions(req, res);
@@ -18,7 +17,6 @@ export default function handler(req, res) {
   }
 }
 
-// Get all questions
 async function getQuestions(req, res) {
   try {
     await connectMongo();
@@ -30,7 +28,7 @@ async function getQuestions(req, res) {
     res.status(500).json({ msg: "Something went wrong", error: err });
   }
 }
-// Add question
+
 async function addQuestion(req, res) {
   const session = await unstable_getServerSession(req, res, authOptions);
 

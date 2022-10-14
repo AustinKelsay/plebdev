@@ -2,7 +2,6 @@ import connectMongo from "../../../../src/lib/connectMongo";
 import Answers from "../../../../src/models/answer";
 
 export default function handler(req, res) {
-  // switch the methods
   switch (req.method) {
     case "GET": {
       return getAnswersOnQuestion(req, res);
