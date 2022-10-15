@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Flex, Text } from "@chakra-ui/react";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { Flex, Text, Tooltip, Box } from "@chakra-ui/react";
+import { FaArrowUp, FaBolt } from "react-icons/fa";
 import ClipLoader from "react-spinners/ClipLoader";
 import { tipAnswer } from "../../../redux/answersReducer";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +8,8 @@ import styles from "./styles.module.css";
 
 const AnswerTips = ({ id }) => {
   const dispatch = useDispatch();
+
+  const tipAmount = 1;
 
   const votes = useSelector(
     (state) => state.answers.answers.filter((a) => a.id === id)[0].votes
@@ -38,13 +40,23 @@ const AnswerTips = ({ id }) => {
       justifyContent={"space-evenly"}
       alignItems={"center"}
     >
-      <FaArrowUp onClick={() => handleTip(1)} cursor={"pointer"} />
+      <Tooltip
+        label={`Tip ${tipAmount}`}
+        placement="bottom-start"
+        aria-label="A tooltip"
+      >
+        <Box onClick={() => handleTip(tipAmount)} cursor={"pointer"}>
+          <FaArrowUp />
+        </Box>
+      </Tooltip>
       {loading ? (
         <ClipLoader size={17} color="orange" />
       ) : (
-        <Text>{currentScore}</Text>
+        <Flex flexDirection={"row"} alignItems={"center"}>
+          <FaBolt color={"#fada5e"} size={12} />
+          <Text>{currentScore}</Text>
+        </Flex>
       )}
-      <FaArrowDown onClick={() => handleTip(-1)} cursor={"pointer"} />
     </Flex>
   );
 };
