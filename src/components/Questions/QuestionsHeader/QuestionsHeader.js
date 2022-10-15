@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Text, Flex, Tag } from "@chakra-ui/react";
+import { useSelector, useDispatch } from "react-redux";
+import { setQuestionsFilter } from "../../../redux/questionsReducer";
 import styles from "./styles.module.css";
 
 const QuestionsHeader = ({ count }) => {
-  const [selected, setSelected] = useState("newest");
+  const dispatch = useDispatch();
 
-  const filters = ["newest", "votes", "bountied", "unanswered"];
+  const selected = useSelector((state) => state.questions.questionsFilter);
+
+  const filters = ["newest", "score", "bountied", "unanswered"];
 
   return (
     <Flex
@@ -29,7 +33,7 @@ const QuestionsHeader = ({ count }) => {
             size={"lg"}
             variant={selected === filter ? "solid" : "subtle"}
             colorScheme={"gray"}
-            onClick={() => setSelected(filter)}
+            onClick={() => dispatch(setQuestionsFilter(filter))}
           >
             {filter}
           </Tag>

@@ -5,6 +5,7 @@ const initialState = {
   question: {},
   loading: false,
   isSuccess: false,
+  questionsFilter: "newest",
 };
 
 export const getQuestion = createAsyncThunk(
@@ -29,7 +30,6 @@ export const tipQuestion = createAsyncThunk(
         "http://localhost:3000/api/questions/" + slug,
         { score: tip }
       );
-      console.log(data);
       return data;
     } catch (error) {
       rejectWithValue(error.response);
@@ -40,7 +40,11 @@ export const tipQuestion = createAsyncThunk(
 export const questionsSlice = createSlice({
   name: "questions",
   initialState,
-  reducers: {},
+  reducers: {
+    setQuestionsFilter: (state, action) => {
+      state.questionsFilter = action.payload;
+    },
+  },
   extraReducers: {
     [getQuestion.pending]: (state, action) => {
       state.loading = true;
@@ -67,5 +71,7 @@ export const questionsSlice = createSlice({
     },
   },
 });
+
+export const { setQuestionsFilter } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
