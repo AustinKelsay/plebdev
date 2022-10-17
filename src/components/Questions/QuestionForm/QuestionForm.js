@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import TagsInput from "./TagsInput/TagsInput";
 import MarkdownForm from "../../Markdown/MarkdownForm/MarkdownForm";
 import styles from "./styles.module.css";
+import { incrementAnswersCount } from "../../../redux/questionsReducer";
 
 const QuestionForm = ({ tags }) => {
   const { data: session, status } = useSession();

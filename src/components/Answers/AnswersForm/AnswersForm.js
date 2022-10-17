@@ -22,8 +22,16 @@ const AnswersForm = () => {
       question_id: slug,
     };
     dispatch(postAnswer(answer));
-    setText("");
-    router.replace(router.asPath);
+    // Todo make sure answer is actually posted before incrementing
+    dispatch(incrementAnswersCount(slug))
+      .unwrap()
+      .then((res) => {
+        setText("");
+        router.replace(router.asPath);
+      })
+      .catch((rejectedValueOrSerializedError) => {
+        console.log(rejectedValueOrSerializedError);
+      });
   };
 
   return (

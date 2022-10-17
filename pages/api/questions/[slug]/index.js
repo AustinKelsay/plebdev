@@ -51,6 +51,11 @@ async function updateQuestion(req, res) {
 
     if (req.body.score) {
       paramsToUpdate = { ...paramsToUpdate, $inc: { score: req.body.score } };
+    } else if (req.body.answersCount) {
+      paramsToUpdate = {
+        ...paramsToUpdate,
+        $inc: { answersCount: req.body.answersCount },
+      };
     } else {
       paramsToUpdate = { ...paramsToUpdate, ...req.body };
     }
