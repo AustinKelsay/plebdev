@@ -37,6 +37,20 @@ export const tipQuestion = createAsyncThunk(
   }
 );
 
+export const deleteQuestion = createAsyncThunk(
+  "questions/deleteQuestion",
+  async (slug, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(
+        "http://localhost:3000/api/questions/" + slug
+      );
+      return data;
+    } catch (error) {
+      rejectWithValue(error.response);
+    }
+  }
+);
+
 export const incrementAnswersCount = createAsyncThunk(
   "questions/answerCount",
   async ({ slug }, { rejectWithValue }) => {
