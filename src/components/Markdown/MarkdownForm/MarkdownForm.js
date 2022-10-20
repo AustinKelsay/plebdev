@@ -66,7 +66,8 @@ const MarkdownForm = ({ markdown, handleChange }) => {
             "strikethrough",
             "heading",
             "quote",
-            "list",
+            "olist",
+            "ulist",
             codeBlock,
           ]}
         />

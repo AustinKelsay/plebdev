@@ -37,7 +37,8 @@ const AnswerTips = ({ id }) => {
     <Flex
       className={styles.votesContainer}
       flexDirection={"column"}
-      justifyContent={"space-evenly"}
+      justifyContent={"flex-start"}
+      pt={2}
       alignItems={"center"}
     >
       <Tooltip

@@ -5,6 +5,7 @@ import { Image } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 import AnswerTips from "../AnswerTips/AnswerTips";
+import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 
 const Answer = ({ author, text, votes, views, created, id }) => {
   const router = useRouter();
@@ -37,16 +38,7 @@ const Answer = ({ author, text, votes, views, created, id }) => {
             flexDirection={"column"}
             justifyContent={"space-between"}
           >
-            {text.includes("```") ? (
-              // return everything not in the code block
-              <Text className={styles.answerDescription}>
-                {text.split("```")[0]}
-              </Text>
-            ) : (
-              <Text noOfLines={4} className={styles.answerDescription}>
-                {text}
-              </Text>
-            )}
+            <MarkdownDisplay markdown={text} />
             <Flex
               w={"100%"}
               flexDirection={"row"}
