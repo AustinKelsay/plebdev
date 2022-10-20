@@ -23,15 +23,17 @@ const AnswersForm = () => {
     };
     dispatch(postAnswer(answer));
     // Todo make sure answer is actually posted before incrementing
-    dispatch(incrementAnswersCount(slug))
-      .unwrap()
-      .then((res) => {
-        setText("");
-        router.replace(router.asPath);
-      })
-      .catch((rejectedValueOrSerializedError) => {
-        console.log(rejectedValueOrSerializedError);
-      });
+    // dispatch(incrementAnswersCount(slug))
+    //   .unwrap()
+    //   .then((res) => {
+    //     setText("");
+    //     router.replace(router.asPath);
+    //   })
+    //   .catch((rejectedValueOrSerializedError) => {
+    //     console.log(rejectedValueOrSerializedError);
+    //   });
+    setText("");
+    router.replace(router.asPath);
   };
 
   return (
