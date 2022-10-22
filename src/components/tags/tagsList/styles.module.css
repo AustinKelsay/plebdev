@@ -13,8 +13,8 @@
   padding-left: 0;
   border: 1px solid darkgray;
   border-radius: 5px;
-  width: 20vw;
-  height: 15vh;
+  width: 25vw;
+  height: 18vh;
 }
 
 .tagCard:hover {
@@ -22,15 +22,15 @@
   border-color: #3182ce;
 }
 
-.tagDescriptionContainer {
-  height: 100%;
-}
-
 .tagDescription {
-  white-space: nowrap;
+  white-space: wrap;
   overflow: clip;
   text-overflow: ellipsis;
   margin-left: 2%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .tag {
