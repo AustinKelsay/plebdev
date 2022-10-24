@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, Flex, Tag, Box } from "@chakra-ui/react";
+import axios from "axios";
 import Link from "next/link";
 import styles from "./styles.module.css";
+import ListedTag from "../ListedTag/ListedTag";
 
 const TagsList = ({ tags }) => {
   return (
@@ -10,35 +12,9 @@ const TagsList = ({ tags }) => {
         Tags
       </Text>
       <Flex flexDirection={"row"} flexWrap={"wrap"}>
-        {tags.map((tag) => (
-          <Link key={tag.id} href={`/tags/${tag.id}`}>
-            <Flex
-              flexDirection={"column"}
-              justifyContent={"space-between"}
-              className={styles.tagCard}
-            >
-              <Tag
-                className={styles.tag}
-                variant={"outline"}
-                colorScheme={"blue"}
-              >
-                {tag.name}
-              </Tag>
-              <Text className={styles.tagDescription} fontSize={"xs"}>
-                {tag.description ||
-                  "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"}
-              </Text>
-              <Flex flexDirection={"column"}>
-                <Text className={styles.tagStat} fontSize={"xs"}>
-                  questions: 1
-                </Text>
-                <Text className={styles.tagStat} fontSize={"xs"}>
-                  answers: 1
-                </Text>
-              </Flex>
-            </Flex>
-          </Link>
-        ))}
+        {tags.map((tag) => {
+          return <ListedTag key={tag.id} tag={tag} />;
+        })}
       </Flex>
     </div>
   );

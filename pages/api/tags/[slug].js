@@ -30,8 +30,9 @@ async function getTagInfoByName(req, res) {
 
     // Get all the questions with this tag.name
     const questions = await Questions.find({ tags: tag.name });
+    const count = questions.length;
 
-    res.status(200).json(questions);
+    res.status(200).json({ questions, count });
   } catch {
     res.status(500).json({ error: "Something went wrong" });
   }

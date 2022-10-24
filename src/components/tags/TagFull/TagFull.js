@@ -3,7 +3,7 @@ import { Text, Flex, Tag, Box } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 import TaggedQuestions from "../TaggedQuestions/TaggedQuestions";
 
-const TagInfo = ({ tag }) => {
+const TagFull = ({ tag }) => {
   return (
     <Box className={styles.tagInfoContainer}>
       <Text className={styles.componentTitle} fontSize={"3xl"}>
@@ -21,4 +21,4 @@ const TagInfo = ({ tag }) => {
   );
 };
 
-export default TagInfo;
+export default TagFull;

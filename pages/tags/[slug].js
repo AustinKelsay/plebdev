@@ -1,5 +1,5 @@
 import React from "react";
-import TagInfo from "../../src/components/Tags/TagInfo/TagInfo";
+import TagFull from "../../src/components/Tags/TagFull/TagFull";
 import { useRouter } from "next/router";
 
 export default function Home({ tags }) {
@@ -7,7 +7,7 @@ export default function Home({ tags }) {
 
   const tag = tags.filter((tag) => tag.id === slug)[0];
 
-  return <TagInfo tag={tag} />;
+  return <TagFull tag={tag} />;
 }
 
 export async function getServerSideProps() {
