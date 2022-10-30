@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import { Text, Flex, Tag, Box } from "@chakra-ui/react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { getQuestionsCount } from "../../../redux/tagsReducer";
+import axios from "axios";
 import styles from "./styles.module.css";
 
 const ListedTag = ({ tag }) => {
-  const dispatch = useDispatch();
+  const [questionsCount, setQuestionsCount] = React.useState(null);
 
   useEffect(() => {
-    dispatch(getQuestionsCount(tag.id));
+    axios
+      .get(`http://localhost:3000/api/tags/${tag.id}`)
+      .then((res) => {
+        setQuestionsCount(res.data.count);
+      })
+      .catch((err) => console.log(err));
   }, []);
-
-  const questionsCount = useSelector(
-    (state) => state.tags.taggedQuestionsCount
-  );
 
   return (
     <Link key={tag.id} href={`/tags/${tag.id}`}>
