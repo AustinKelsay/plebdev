@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { Grid, GridItem, Flex, Text, Box, Tag, Code } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
+import axios from "axios";
 import styles from "./styles.module.css";
 
 const Question = ({
@@ -9,6 +10,7 @@ const Question = ({
   title,
   description,
   tags,
+  answersCount,
   score,
   views,
   created,
@@ -18,7 +20,7 @@ const Question = ({
     <Grid templateColumns={"15% 2fr"} className={styles.question}>
       <GridItem className={styles.gridItemLeft} colSpan={1}>
         <Text>Votes {score}</Text>
-        <Text>Answers 0</Text>
+        <Text>Answers {answersCount}</Text>
         <Text>Views {views}</Text>
       </GridItem>
       <Flex flexDirection={"column"}>

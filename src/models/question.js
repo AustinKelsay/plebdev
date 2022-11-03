@@ -8,7 +8,7 @@ const questionSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   tags: [{ type: String, required: true }],
-  answersCount: [{ type: Number, default: 0 }],
+  answersCount: { type: Number, default: 0 },
   score: { type: Number, default: 0 },
   created: { type: Date, default: Date.now },
   views: { type: Number, default: 0 },
