@@ -51,7 +51,7 @@ export const deleteQuestion = createAsyncThunk(
   }
 );
 
-export const incrementAnswersCount = createAsyncThunk(
+export const AnswersCount = createAsyncThunk(
   "questions/answerCount",
   async ({ slug }, { rejectWithValue }) => {
     try {
@@ -95,17 +95,6 @@ export const questionsSlice = createSlice({
       state.isSuccess = true;
     },
     [tipQuestion.rejected]: (state, action) => {
-      state.loading = false;
-      state.isSuccess = false;
-    },
-    [incrementAnswersCount.pending]: (state, action) => {
-      state.loading = true;
-    },
-    [incrementAnswersCount.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.isSuccess = true;
-    },
-    [incrementAnswersCount.rejected]: (state, action) => {
       state.loading = false;
       state.isSuccess = false;
     },

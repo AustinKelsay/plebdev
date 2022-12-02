@@ -1,15 +1,33 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, Button } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
 import AnswerTips from "../AnswerTips/AnswerTips";
 import MarkdownDisplay from "../../../lib/MarkdownDisplay";
+import { decrementAnswersCount } from "../../../redux/answersReducer";
 
 const Answer = ({ author, text, votes, views, created, id }) => {
   const router = useRouter();
   const [user, setUser] = useState();
+  const { data: session } = useSession();
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    axios
+      .delete(`/api/answers/${id}`)
+      .then((res) => {
+        dispatch(decrementAnswersCount(router.query.slug));
+        router.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:3000/api/users/${author}`)
@@ -20,12 +38,24 @@ const Answer = ({ author, text, votes, views, created, id }) => {
         console.log(err);
       });
   }, []);
+
   return (
     <Flex
       flexDirection={"row"}
       justifyContent={"space-between"}
       className={styles.answer}
     >
+      {session?.user?.id === author && (
+        <Button
+          colorScheme={"red"}
+          alignSelf={"center"}
+          fontSize={"xs"}
+          size={"xs"}
+          onClick={handleDelete}
+        >
+          Delete
+        </Button>
+      )}
       <AnswerTips id={id} />
       <Flex w={"100%"} flexDirection={"column"}>
         <Flex
