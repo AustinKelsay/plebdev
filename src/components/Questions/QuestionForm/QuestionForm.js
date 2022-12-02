@@ -89,7 +89,17 @@ const QuestionForm = ({ tags }) => {
           flexDirection={"row"}
           justifyContent={"flex-end"}
         >
-          <Button type="submit">Submit</Button>
+          {/* This button is disabled unless all of the properties of formData are filled out */}
+          <Button
+            disabled={
+              formData.title.length === 0 ||
+              formData.description.length === 0 ||
+              formData.tags.length === 0
+            }
+            type="submit"
+          >
+            Submit
+          </Button>
         </Flex>
       </form>
     </Flex>

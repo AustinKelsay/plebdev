@@ -51,6 +51,21 @@ export const tipAnswer = createAsyncThunk(
   }
 );
 
+export const incrementAnswersCount = createAsyncThunk(
+  "questions/incrementAnswersCount",
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(
+        "http://localhost:3000/api/questions/" + id,
+        { answersCount: 1 }
+      );
+      return data;
+    } catch (error) {
+      rejectWithValue(error.response);
+    }
+  }
+);
+
 export const answersSlice = createSlice({
   name: "answers",
   initialState,
@@ -88,6 +103,17 @@ export const answersSlice = createSlice({
       state.isSuccess = true;
     },
     [tipAnswer.rejected]: (state, action) => {
+      state.loading = false;
+      state.isSuccess = false;
+    },
+    [incrementAnswersCount.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [incrementAnswersCount.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.isSuccess = true;
+    },
+    [incrementAnswersCount.rejected]: (state, action) => {
       state.loading = false;
       state.isSuccess = false;
     },

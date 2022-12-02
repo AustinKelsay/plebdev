@@ -19,7 +19,7 @@ const Question = ({
 }) => {
   return (
     <Grid
-      templateColumns={"20% 2fr"}
+      templateColumns={"14% 2fr"}
       overflowX={"clip"}
       className={styles.question}
     >
@@ -39,7 +39,7 @@ const Question = ({
             {description.includes("```") ? (
               <Box
                 className={styles.questionDescription}
-                height={"150px"}
+                height={"120px"}
                 overflow={"clip"}
               >
                 <MarkdownDisplay markdown={description} />

@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Flex, FormControl, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { postAnswer } from "../../../redux/answersReducer";
+import {
+  postAnswer,
+  incrementAnswersCount,
+} from "../../../redux/answersReducer";
 import { useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import MarkdownForm from "../../Markdown/MarkdownForm/MarkdownForm";
@@ -23,17 +26,15 @@ const AnswersForm = () => {
     };
     dispatch(postAnswer(answer));
     // Todo make sure answer is actually posted before incrementing
-    // dispatch(incrementAnswersCount(slug))
-    //   .unwrap()
-    //   .then((res) => {
-    //     setText("");
-    //     router.replace(router.asPath);
-    //   })
-    //   .catch((rejectedValueOrSerializedError) => {
-    //     console.log(rejectedValueOrSerializedError);
-    //   });
-    setText("");
-    router.replace(router.asPath);
+    dispatch(incrementAnswersCount(slug))
+      .unwrap()
+      .then((res) => {
+        setText("");
+        router.replace(router.asPath);
+      })
+      .catch((rejectedValueOrSerializedError) => {
+        console.log(rejectedValueOrSerializedError);
+      });
   };
 
   return (
