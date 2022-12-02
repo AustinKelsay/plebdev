@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { Grid, GridItem, Flex, Text, Box, Tag, Code } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { incrementViewsCount } from "../../../redux/questionsReducer";
 import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 import styles from "./styles.module.css";
 
@@ -17,6 +18,11 @@ const Question = ({
   created,
   id,
 }) => {
+  const dispatch = useDispatch();
+  const handleViews = () => {
+    dispatch(incrementViewsCount(id));
+  };
+
   return (
     <Grid
       templateColumns={"14% 2fr"}
@@ -31,7 +37,11 @@ const Question = ({
       <Flex flexDirection={"column"} justifyContent={"space-evenly"}>
         <Flex className={styles.questionInfoRow} flexDirection={"row"}>
           <Flex flexDirection={"column"} justifyContent={"space-evenly"}>
-            <Text className={styles.questionTitle} fontSize={"1xl"}>
+            <Text
+              onClick={handleViews}
+              className={styles.questionTitle}
+              fontSize={"1xl"}
+            >
               <Link href={`/questions/${id}`} passHref>
                 {title}
               </Link>

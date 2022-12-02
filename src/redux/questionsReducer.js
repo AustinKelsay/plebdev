@@ -51,13 +51,13 @@ export const deleteQuestion = createAsyncThunk(
   }
 );
 
-export const AnswersCount = createAsyncThunk(
-  "questions/answerCount",
-  async ({ slug }, { rejectWithValue }) => {
+export const incrementViewsCount = createAsyncThunk(
+  "questions/incrementViewsCount",
+  async (slug, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(
         "http://localhost:3000/api/questions/" + slug,
-        { answersCount: 1 }
+        { views: 1 }
       );
       return data;
     } catch (error) {

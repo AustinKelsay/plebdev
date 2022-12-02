@@ -56,6 +56,11 @@ async function updateQuestion(req, res) {
         ...paramsToUpdate,
         $inc: { answersCount: req.body.answersCount },
       };
+    } else if (req.body.views) {
+      paramsToUpdate = {
+        ...paramsToUpdate,
+        $inc: { views: req.body.views },
+      };
     } else {
       paramsToUpdate = { ...paramsToUpdate, ...req.body };
     }
