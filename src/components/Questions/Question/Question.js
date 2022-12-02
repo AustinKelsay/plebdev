@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Grid, GridItem, Flex, Text, Box, Tag, Code } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import axios from "axios";
+import MarkdownDisplay from "../../../lib/MarkdownDisplay";
 import styles from "./styles.module.css";
 
 const Question = ({
@@ -17,13 +18,17 @@ const Question = ({
   id,
 }) => {
   return (
-    <Grid templateColumns={"15% 2fr"} className={styles.question}>
+    <Grid
+      templateColumns={"20% 2fr"}
+      overflowX={"clip"}
+      className={styles.question}
+    >
       <GridItem className={styles.gridItemLeft} colSpan={1}>
         <Text>Votes {score}</Text>
         <Text>Answers {answersCount}</Text>
         <Text>Views {views}</Text>
       </GridItem>
-      <Flex flexDirection={"column"}>
+      <Flex flexDirection={"column"} justifyContent={"space-evenly"}>
         <Flex className={styles.questionInfoRow} flexDirection={"row"}>
           <Flex flexDirection={"column"} justifyContent={"space-evenly"}>
             <Text className={styles.questionTitle} fontSize={"1xl"}>
@@ -32,10 +37,13 @@ const Question = ({
               </Link>
             </Text>
             {description.includes("```") ? (
-              // return everything not in the code block
-              <Text className={styles.questionDescription}>
-                {description.split("```")[0]}
-              </Text>
+              <Box
+                className={styles.questionDescription}
+                height={"150px"}
+                overflow={"clip"}
+              >
+                <MarkdownDisplay markdown={description} />
+              </Box>
             ) : (
               <Text noOfLines={4} className={styles.questionDescription}>
                 {description}

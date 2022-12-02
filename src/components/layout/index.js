@@ -10,12 +10,12 @@ export default function Layout({ children }) {
       templateAreas={`"header header"
                         "nav main"
                         "nav footer"`}
-      gridTemplateRows={"10% 1fr 10%"}
+      gridTemplateRows={"12% 1fr"}
       gridTemplateColumns={"200px 1fr"}
       h="100vh"
       color="blackAlpha.700"
     >
-      <GridItem borderBottom={"1px solid #e6e6e6"} area={"header"}>
+      <GridItem borderBottom={"1px solid #e6e6e6"} w={"100vw"} area={"header"}>
         <Header />
       </GridItem>
       <GridItem borderRight={"1px solid #e6e6e6"} area={"nav"}>
