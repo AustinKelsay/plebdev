@@ -1,5 +1,7 @@
 import connectMongo from "../../../src/lib/connectMongo";
 import Users from "../../../src/models/user";
+import Questions from "../../../src/models/question";
+import Answers from "../../../src/models/answer";
 
 export default function handler(req, res) {
   switch (req.method) {
@@ -24,7 +26,19 @@ async function getUserByID(req, res) {
 
     const user = await Users.findOne({ _id: req.query.slug });
 
-    res.status(200).json(user);
+    const questions = await Questions.find({
+      "author.username": user.username,
+    });
+
+    const answers = await Answers.find({ author: user.id });
+
+    const response_obj = {
+      user,
+      questionsCount: questions.length,
+      answersCount: answers.length,
+    };
+
+    res.status(200).json(response_obj);
   } catch {
     res.status(500).json({ error: "Something went wrong" });
   }
