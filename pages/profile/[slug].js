@@ -1,8 +1,16 @@
 import React from "react";
 import UserProfile from "../../src/components/Users/UserProfile/UserProfile";
 
-const Profile = () => {
-  return <UserProfile />;
-};
+export default function Profile({ user }) {
+  return <UserProfile user={user} />;
+}
 
-export default Profile;
+export async function getServerSideProps({ params }) {
+  const userRes = await fetch(`http://localhost:3000/api/users/${params.slug}`);
+  const user = await userRes.json();
+  return {
+    props: {
+      user,
+    },
+  };
+}

@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Flex, Text, Button, Image } from "@chakra-ui/react";
 import Loading from "../../Loading/Loading";
 import { useSession } from "next-auth/react";
 import styles from "./styles.module.css";
 
-const UserProfile = () => {
+const UserProfile = ({ user }) => {
   const { data: session, status } = useSession();
+
   const formattedDate =
     status === "authenticated"
       ? new Date(session.user.created).toLocaleDateString()
       : null;
+
   return status === "authenticated" ? (
     <Flex className={styles.userProfileContainer} flexDirection={"column"}>
       <Flex w={"100%"} flexDirection={"row"} justifyContent={"space-between"}>
@@ -48,21 +51,21 @@ const UserProfile = () => {
       >
         <Flex flexDirection={"column"} justifyContent={"space-between"}>
           <Text fontWeight={"bold"} fontSize={"lg"}>
-            637
+            1
           </Text>
           <Text fontSize={"sm"}>Sats earned</Text>
           <Text fontWeight={"bold"} fontSize={"lg"}>
-            3
+            {user.answersCount}
           </Text>
           <Text fontSize={"sm"}>answers</Text>
         </Flex>
         <Flex flexDirection={"column"}>
           <Text fontWeight={"bold"} fontSize={"lg"}>
-            6
+            {user.questionsCount}
           </Text>
           <Text fontSize={"sm"}>questions</Text>
           <Text fontWeight={"bold"} fontSize={"lg"}>
-            2
+            1
           </Text>
           <Text fontSize={"sm"}>comments</Text>
         </Flex>

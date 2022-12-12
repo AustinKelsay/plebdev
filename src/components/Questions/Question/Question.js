@@ -40,7 +40,7 @@ const Question = ({
             <Text
               onClick={handleViews}
               className={styles.questionTitle}
-              fontSize={"1xl"}
+              fontSize={"xl"}
             >
               <Link href={`/questions/${id}`} passHref>
                 {title}

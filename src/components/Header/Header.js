@@ -41,7 +41,7 @@ const Header = () => {
                 ? styles.userContainerActive
                 : styles.userContainer
             }
-            onClick={() => router.push(`/profile/${session.user.username}`)}
+            onClick={() => router.push(`/profile/${session.user.id}`)}
             justifyContent={"flex-start"}
             flexDirection={"row"}
           >
