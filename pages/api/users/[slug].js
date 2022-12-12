@@ -2,6 +2,7 @@ import connectMongo from "../../../src/lib/connectMongo";
 import Users from "../../../src/models/user";
 import Questions from "../../../src/models/question";
 import Answers from "../../../src/models/answer";
+import Comments from "../../../src/models/comment";
 
 export default function handler(req, res) {
   switch (req.method) {
@@ -32,10 +33,13 @@ async function getUserByID(req, res) {
 
     const answers = await Answers.find({ author: user.id });
 
+    const comments = await Comments.find({ author: user.id });
+
     const response_obj = {
       user,
       questionsCount: questions.length,
       answersCount: answers.length,
+      commentsCount: comments.length,
     };
 
     res.status(200).json(response_obj);

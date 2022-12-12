@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Flex, Text, Button, Image } from "@chakra-ui/react";
 import Loading from "../../Loading/Loading";
 import { useSession } from "next-auth/react";
@@ -65,7 +64,7 @@ const UserProfile = ({ user }) => {
           </Text>
           <Text fontSize={"sm"}>questions</Text>
           <Text fontWeight={"bold"} fontSize={"lg"}>
-            1
+            {user.commentsCount}
           </Text>
           <Text fontSize={"sm"}>comments</Text>
         </Flex>
