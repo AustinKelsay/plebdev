@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, FormControl, Button } from "@chakra-ui/react";
+import { Flex, FormControl, Button, Tooltip } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import {
@@ -37,9 +37,19 @@ const AnswersForm = () => {
       });
   };
 
+  const routeToLogin = (e) => {
+    e.preventDefault();
+    router.push("/login");
+  };
+
   return (
     <Flex>
-      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+      <form
+        className={styles.form}
+        onSubmit={(e) =>
+          status == "authenticated" ? handleSubmit(e) : routeToLogin(e)
+        }
+      >
         <FormControl>
           <MarkdownForm markdown={text} handleChange={(e) => setText(e)} />
         </FormControl>
@@ -48,7 +58,16 @@ const AnswersForm = () => {
           flexDirection={"row"}
           justifyContent={"flex-end"}
         >
-          <Button type="submit">Submit</Button>
+          <Tooltip
+            label={"Login to add an answer"}
+            placement="bottom-start"
+            aria-label="A tooltip"
+            isDisabled={status == "authenticated"}
+          >
+            <Button type="submit">
+              {status == "authenticated" ? "Submit" : "Login"}
+            </Button>
+          </Tooltip>
         </Flex>
       </form>
     </Flex>
