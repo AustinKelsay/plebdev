@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { getAnswers } from "../../../redux/answersReducer";
 import styles from "./styles.module.css";
-import CommentForm from "../../Comments/CommentForm/CommentForm";
 
 const AnswersList = () => {
   const router = useRouter();
@@ -34,14 +33,7 @@ const AnswersList = () => {
         flexDirection={"row"}
       ></Flex>
       {answers.length ? (
-        answers.map((a) => {
-          return (
-            <Box key={a.id}>
-              <Answer {...a} />
-              <CommentForm answerId={a.id} />
-            </Box>
-          );
-        })
+        answers.map((a) => <Answer key={a.id} {...a} />)
       ) : (
         <Loading />
       )}

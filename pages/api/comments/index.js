@@ -19,7 +19,7 @@ async function addComment(req, res) {
     await connectMongo();
 
     const comment = {
-      body: req.body.text,
+      body: req.body.body,
       author: req.body.author,
       answer_id: req.body.answer_id,
     };
