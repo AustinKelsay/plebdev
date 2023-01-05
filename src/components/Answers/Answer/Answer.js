@@ -74,31 +74,9 @@ const Answer = ({ author, text, votes, views, created, id }) => {
       justifyContent={"space-between"}
       className={styles.answer}
     >
-      {session?.user?.id === author ? (
-        <Button
-          colorScheme={"red"}
-          alignSelf={"center"}
-          fontSize={"xs"}
-          size={"xs"}
-          className={styles.button}
-          onClick={handleDelete}
-        >
-          delete
-        </Button>
-      ) : (
-        <Button
-          className={styles.button}
-          onClick={() => setShow(!show)}
-          alignSelf={"center"}
-          colorScheme={"green"}
-          fontSize={"xs"}
-          size={"xs"}
-          leftIcon={show ? "-" : "+"}
-        >
-          comment
-        </Button>
-      )}
+      {/* <Flex flexDirection={"column"} alignItems={"center"} p={"1%"} pt={0}> */}
       <AnswerTips id={id} />
+      {/* </Flex> */}
       <Flex w={"100%"} flexDirection={"column"}>
         <Flex
           className={styles.answerInfoRow}
@@ -178,6 +156,31 @@ const Answer = ({ author, text, votes, views, created, id }) => {
               </Tooltip>
             </Flex>
           </form>
+        )}
+        {session?.user?.id === author ? (
+          <Button
+            colorScheme={"red"}
+            // alignSelf={"center"}
+            fontSize={"xs"}
+            size={"xs"}
+            className={styles.button}
+            onClick={handleDelete}
+          >
+            delete
+          </Button>
+        ) : (
+          <Button
+            className={styles.button}
+            onClick={() => setShow(!show)}
+            alignSelf={"start"}
+            justifySelf={"start"}
+            colorScheme={"green"}
+            fontSize={"xs"}
+            size={"xs"}
+            leftIcon={show ? "-" : "+"}
+          >
+            comment
+          </Button>
         )}
         <CommentsList answer_id={id} />
       </Flex>

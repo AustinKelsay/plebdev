@@ -17,9 +17,8 @@ const Comment = ({ author, body, created, id }) => {
 
   const handleDelete = () => {
     axios
-      .delete(`/api/answers/${id}`)
+      .delete(`/api/comments/${id}`)
       .then((res) => {
-        dispatch(decrementAnswersCount(router.query.slug));
         router.reload();
       })
       .catch((err) => {
@@ -42,6 +41,8 @@ const Comment = ({ author, body, created, id }) => {
     <Flex
       flexDirection={"row"}
       justifyContent={"space-between"}
+      pt={"1%"}
+      pb={"1%"}
       className={styles.answer}
     >
       {session?.user?.id === author && (
@@ -50,6 +51,7 @@ const Comment = ({ author, body, created, id }) => {
           alignSelf={"center"}
           fontSize={"xs"}
           size={"xs"}
+          m={"1%"}
           onClick={handleDelete}
         >
           Delete
