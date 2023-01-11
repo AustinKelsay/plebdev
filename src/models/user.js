@@ -1,18 +1,19 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, model, models } from "mongoose";
 
 const userModel = new Schema({
   username: { type: String, unique: true, required: true },
-  key: { type: String, unique: true},
+  key: { type: String, unique: true },
+  test: { type: String, default: false },
   profilePhoto: {
     type: String,
     default: function () {
       return `https://secure.gravatar.com/avatar/${this._id}?s=90&d=identicon`;
-    }
+    },
   },
-  created: { type: Date, default: Date.now }
+  created: { type: Date, default: Date.now },
 });
 
-userModel.set('toJSON', { getters: true });
+userModel.set("toJSON", { getters: true });
 userModel.options.toJSON.transform = (doc, ret) => {
   const obj = { ...ret };
   delete obj._id;
@@ -20,6 +21,6 @@ userModel.options.toJSON.transform = (doc, ret) => {
   return obj;
 };
 
-const Users = models.Users || model('Users', userModel);
+const Users = models.Users || model("Users", userModel);
 
 export default Users;

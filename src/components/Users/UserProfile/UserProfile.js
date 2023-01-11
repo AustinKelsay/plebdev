@@ -7,6 +7,10 @@ import styles from "./styles.module.css";
 const UserProfile = ({ user }) => {
   const { data: session, status } = useSession();
 
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+
   const formattedDate =
     status === "authenticated"
       ? new Date(session.user.created).toLocaleDateString()

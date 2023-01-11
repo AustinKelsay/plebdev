@@ -1,35 +1,27 @@
 import axios from "axios";
 import NextAuth from "next-auth";
+import MongooseAdapter from "@next-auth/mongoose-adapter";
 import GithubProvider from "next-auth/providers/github";
-
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
+import clientPromise from "../../../lib/mongodb.js";
 
 export const authOptions = {
-  // Configure one or more authentication providers
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    // ...add more providers here
   ],
+  adapter: MongooseAdapter(clientPromise, {
+    model: "Users",
+  }),
   callbacks: {
     async session({ session }) {
-      const user = await axios.post("http://localhost:3000/api/users", {
+      const user = {
         username: session.user.name,
-        key: session.user.name,
-      });
-
-      if (user.status === 200) {
-        session.user = user.data.exists;
-        return session;
-      } else if (user.status === 201) {
-        session.user = user.data;
-        return session;
-      } else {
-        return session;
-      }
+        test: true,
+      };
+      await session.adapter.upsert({ user });
+      return session;
     },
   },
 };
